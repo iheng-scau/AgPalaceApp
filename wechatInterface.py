@@ -26,7 +26,7 @@ class WechatInterface:
             sha1=hashlib.sha1()
             map(sha1.update,list)
             hashcode=sha1.hexdigest()
-            if hashcode == signature
+            if hashcode == signature:
                 return echostr
 
         def POST(self):
