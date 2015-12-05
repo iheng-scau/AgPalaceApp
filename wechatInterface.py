@@ -35,6 +35,6 @@ class WechatInterface:
             xml=etree.fromstring(str_xml)
             content=xml.find("Content").text
             msgType=xml.find("MsgType").text
-            fromUser=xml.find("FromUser").text
-            toUser=xml.find("ToUser").text
+            fromUser=xml.find("FromUserName").text
+            toUser=xml.find("ToUserName").text
             return self.render.reply_text(fromUser,toUserint(time.time()),u"hello");
