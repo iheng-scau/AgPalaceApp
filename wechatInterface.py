@@ -37,4 +37,5 @@ class WechatInterface:
             msgType=xml.find("MsgType").text
             fromUser=xml.find("FromUserName").text
             toUser=xml.find("ToUserName").text
+            logging.debug(content+msgType+fromUser)
             return self.render.reply_text(fromUser,toUser,int(time.time()),u"hello");
