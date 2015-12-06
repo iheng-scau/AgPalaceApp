@@ -8,9 +8,9 @@ from lxml import etree
 
 class HandlerInterface:
 
-	def __init__(self,data):
+	def __init__(self, data):
 		self.app_root=os.path.dirname(__file__)
-        self.templates_root=os.path.join(self.app_root,'templates')
+		self.templates_root=os.path.join(self.app_root,'templates')
         self.render=web.template.render(self.templates_root)
         self.data=data
 
