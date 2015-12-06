@@ -39,12 +39,10 @@ class WechatInterface:
             msgType=xml.find("MsgType").text
             fromUser=xml.find("FromUserName").text
             toUser=xml.find("ToUserName").text
-            #logging.debug(content+msgType+fromUser)
             logging.error(u"-->[recieve msg]:from:"+fromUser+",msg type:msgType")
-            print(u"-->[recieve msg]:from:"+fromUser+",msg type:msgType")
-            
+
             handler=HandlerInterface(xml)
-            result='hello'
+            result=':(-The message type is not supported by our Ag-Palace platform yet.'
             if msgType == 'text':
                 result=handler.onPlainTextMsg()
             elif msgType == 'event':

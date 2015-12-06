@@ -16,7 +16,7 @@ class HandlerInterface:
 
     #处理微信发送的订阅消息
 	def onSubsribeMsg(self):
-		return "hello"
+		return self.render.reply_text(fromUser,toUser,int(time.time()),u"hello")
 
 	#处理微信发送普通文本消息
 	def onPlainTextMsg(self):
