@@ -11,8 +11,8 @@ class HandlerInterface:
 	def __init__(self, data):
 		self.app_root=os.path.dirname(__file__)
 		self.templates_root=os.path.join(self.app_root,'templates')
-        self.render=web.template.render(self.templates_root)
-        self.data=data
+		self.render=web.template.render(self.templates_root)
+		self.data=data
 
     #处理微信发送的订阅消息
 	def onSubsribeMsg(self):
