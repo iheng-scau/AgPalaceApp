@@ -16,7 +16,11 @@ class HandlerInterface:
 
     #处理微信发送的订阅消息
 	def onSubsribeMsg(self):
-		return self.render.reply_text(fromUser,toUser,int(time.time()),u"hello")
+		xml=self.data
+		fromUser=xml.find("FromUserName").text
+		toUser=xml.find("ToUserName").text
+		content=u'欢迎关注银宫微信公众账号,输入相应关键字可以获取信息:\n[1]银民'
+		return self.render.reply_text(fromUser,toUser,int(time.time()),content)
 
 	#处理微信发送普通文本消息
 	def onPlainTextMsg(self):
