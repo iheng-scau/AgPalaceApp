@@ -26,7 +26,7 @@ class HandlerInterface:
 		xml=self.data
 		fromUser=xml.find("FromUserName").text
 		toUser=xml.find("ToUserName").text
-		return self.render.reply_text(fromUser,toUser,int(time.time()),default_content)
+		return self.render.reply_text(fromUser,toUser,int(time.time()),self.default_content)
 
 	#处理微信发送普通文本消息
 	def onPlainTextMsg(self):
@@ -35,7 +35,7 @@ class HandlerInterface:
 		toUser=xml.find("ToUserName").text
 		content=xml.find("Content").text
 		if content=='0':
-			return self.render.reply_text(fromUser,toUser,int(time.time()),default_content)
+			return self.render.reply_text(fromUser,toUser,int(time.time()),self.default_content)
 		return self.render.reply_text(fromUser,toUser,int(time.time()),content)
 
 
