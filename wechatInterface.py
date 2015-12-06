@@ -4,6 +4,7 @@ import web
 import lxml
 import time
 import os
+import logging
 import urllib2,json
 from lxml import etree
 from handlerInterface import HandlerInterface
@@ -40,6 +41,7 @@ class WechatInterface:
             toUser=xml.find("ToUserName").text
             #logging.debug(content+msgType+fromUser)
             logging.err(u"-->[recieve msg]:from:"+fromUser+",msg type:msgType")
+            print(u"-->[recieve msg]:from:"+fromUser+",msg type:msgType")
             handler=HandlerInterface(xml)
             result='hello'
             if msgType == 'text':
