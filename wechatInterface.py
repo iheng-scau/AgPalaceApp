@@ -35,7 +35,6 @@ class WechatInterface:
         def POST(self):
             str_xml=web.data()
             xml=etree.fromstring(str_xml)
-            content=xml.find("Content").text
             msgType=xml.find("MsgType").text
             fromUser=xml.find("FromUserName").text
             toUser=xml.find("ToUserName").text
