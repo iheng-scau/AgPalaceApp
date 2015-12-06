@@ -16,9 +16,7 @@ class HandlerInterface:
 
     #处理微信发送的订阅消息
 	def onSubsribeMsg(self):
-
-	#处理微信发送的取消订阅消息
-	def onUnsubsribeMsg(self):
+		return "hello"
 
 	#处理微信发送普通文本消息
 	def onPlainTextMsg(self):
@@ -26,7 +24,6 @@ class HandlerInterface:
 		fromUser=xml.find("FromUserName").text
 		toUser=xml.find("ToUserName").text
 		content=xml.find("Content").text
-
 		return self.render.reply_text(fromUser,toUser,int(time.time()),content)
 
 
