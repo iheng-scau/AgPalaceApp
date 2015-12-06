@@ -6,6 +6,7 @@ import time
 import os
 import urllib2,json
 from lxml import etree
+from handlerInterface import HandlerInterface
 
 class WechatInterface:
         def __init__(self):
@@ -38,4 +39,13 @@ class WechatInterface:
             fromUser=xml.find("FromUserName").text
             toUser=xml.find("ToUserName").text
             #logging.debug(content+msgType+fromUser)
-            return self.render.reply_text(fromUser,toUser,int(time.time()),u"hello"+content)
+            logging.err(u"-->[recieve msg]:from:"+fromUser+",msg type:msgType")
+            handler=new handler(xml)
+            result='hello'
+            if msgType == 'text':
+                result=handler.onPlainTextMsg()
+            elif msgType == 'event':
+                result=handler.onSubsribeMsg()
+            else:
+                return self.render.reply_text(fromUser,toUser,int(time.time()),u"hello"+content)
+            return result
