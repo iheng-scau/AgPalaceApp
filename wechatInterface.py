@@ -40,7 +40,7 @@ class WechatInterface:
             toUser=xml.find("ToUserName").text
             #logging.debug(content+msgType+fromUser)
             logging.err(u"-->[recieve msg]:from:"+fromUser+",msg type:msgType")
-            handler=new HandlerInterface(xml)
+            handler=HandlerInterface(xml)
             result='hello'
             if msgType == 'text':
                 result=handler.onPlainTextMsg()
