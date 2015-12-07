@@ -5,6 +5,7 @@ import time
 import os
 import urllib2,json
 from lxml import etree
+from authInterface import AuthInterface
 
 class HandlerInterface:
 
@@ -13,6 +14,8 @@ class HandlerInterface:
 		self.templates_root=os.path.join(self.app_root,'templates')
 		self.render=web.template.render(self.templates_root)
 		self.data=data
+		self.fromUser=data.find("FromUserName").text
+		self.toUser=data.find("ToUserName").text
 		self.default_content=u"欢迎关注银宫微信公众账号,输入相应关键字可以获取信息:\n"+\
 		u"[1].银宫|Ag-Palace\n[2].银民|Ager\n[3].银学|Agadamic\n"+\
 		u"[4].银闻|Ag-News\n[5].田纳西-Tennessee Women Co.unLtd\n"+\
@@ -23,19 +26,18 @@ class HandlerInterface:
 
     #处理微信发送的订阅消息
 	def onSubsribeMsg(self):
-		xml=self.data
-		fromUser=xml.find("FromUserName").text
-		toUser=xml.find("ToUserName").text
-		return self.render.reply_text(fromUser,toUser,int(time.time()),self.default_content)
+		return self.render.reply_text(self.fromUser,self.toUser,int(time.time()),self.default_content)
 
 	#处理微信发送普通文本消息
 	def onPlainTextMsg(self):
 		xml=self.data
-		fromUser=xml.find("FromUserName").text
-		toUser=xml.find("ToUserName").text
 		content=xml.find("Content").text
+		#获取欢迎消息
 		if content=='0':
-			return self.render.reply_text(fromUser,toUser,int(time.time()),self.default_content)
-		return self.render.reply_text(fromUser,toUser,int(time.time()),content)
+			return self.render.reply_text(self.fromUser,self.toUser,int(time.time()),self.default_content)
 
+		return self.render.reply_text(self.fromUser,self.toUser,int(time.time()),content)
+
+	#获取银宫信息
+	def onAgPalace(self):
 
