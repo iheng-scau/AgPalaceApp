@@ -40,4 +40,4 @@ class HandlerInterface:
 
 	#获取银宫信息
 	def onAgPalace(self):
-
+		return
