@@ -4,9 +4,6 @@ import MySQLdb
 import sys
 import logging
 
-reload(sys)
-sys.setdefaultencoding('utf-8')
-
 MYSQL_DB=sae.const.MYSQL_DB
 MYSQL_USER=sae.const.MYSQL_USER
 MYSQL_PASS=sae.const.MYSQL_PASS
