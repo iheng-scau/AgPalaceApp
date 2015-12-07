@@ -24,4 +24,4 @@ class MySqlDaoInterface:
 		sql="select * from T_AG_GOSSIP"
 		cursor.execute(sql)
 		row=cursor.fetchone()
-		print(row)
+		print(row[1])
