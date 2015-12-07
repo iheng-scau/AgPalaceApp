@@ -36,7 +36,7 @@ class HandlerInterface:
 		if content=='0':
 			return self.render.reply_text(self.fromUser,self.toUser,int(time.time()),self.default_content)
 		elif content=='1':
-			return onAgPalace()
+			return self.onAgPalace()
 		return self.render.reply_text(self.fromUser,self.toUser,int(time.time()),content)
 
 	#获取银宫信息
