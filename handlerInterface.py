@@ -7,6 +7,7 @@ import logging
 import urllib2,json
 from lxml import etree
 #from authInterface import AuthInterface
+#from mcDaoInterface import McDaoInterface
 
 class HandlerInterface:
 
@@ -19,7 +20,7 @@ class HandlerInterface:
 		self.toUser=data.find("ToUserName").text
 		self.default_content=u"欢迎关注银宫微信公众账号,输入相应关键字可以获取信息:\n"+\
 		u"[1].银宫|Ag-Palace\n[2].银民|Ager\n[3].银学|Agadamic\n"+\
-		u"[4].银闻|Ag-News\n[5].田纳西-Tennessee Women Co.unLtd\n"+\
+		u"[4].银闻|Ag-News\n[5].田纳西-Tennessee Co.unLtd\n"+\
 		u"[6].活动|Agitivity\n[7].你懂的|Oh,shit!\n[8].关于/开发者|About/Developer\n"+\
 		u"*回复相应的数字获取相关信息.\n"+\
 		u"*回复0可再次获得本消息.\n"+\
