@@ -13,7 +13,7 @@ MYSQL_HOST_S=sae.const.MYSQL_HOST_S
 class MySqlDaoInterface:
 
 	def  __init__(self):
-		self.conn=MYSQLdb.connect(host=MYSQL_HOST,user=MYSQL_USER,password=MYSQL_PASS,port=MYSQL_PORT,db=MYSQL_DB,charset='utf-8')
+		self.conn=MySQLdb.connect(host=MYSQL_HOST,user=MYSQL_USER,password=MYSQL_PASS,port=MYSQL_PORT,db=MYSQL_DB,charset='utf-8')
 
 	def testConn(self):
 		cursor=self.conn.cursor()
