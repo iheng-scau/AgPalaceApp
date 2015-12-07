@@ -35,9 +35,14 @@ class HandlerInterface:
 		#获取欢迎消息
 		if content=='0':
 			return self.render.reply_text(self.fromUser,self.toUser,int(time.time()),self.default_content)
-
+		elif content=='1'
+			return onAgPalace()
 		return self.render.reply_text(self.fromUser,self.toUser,int(time.time()),content)
 
 	#获取银宫信息
 	def onAgPalace(self):
-		return
+		title='银宫 | Ag-Palace'
+		description='Home Page of Ag-Palace'
+		picurl='http://agpalaceapp.sinaapp.com/static/err.png'
+		url='http://agpalaceapp.sinaapp.com/static/index.html'
+		return self.render.reply_pic_text(self.fromUser,self.toUser,int(time.time()),title,description,picurl,url)
