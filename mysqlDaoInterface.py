@@ -1,7 +1,11 @@
+#encoding=utf-8
 import sae.const
 import MySQLdb
 import sys
 import logging
+
+reload(sys)
+sys.setdefaultencoding('utf-8')
 
 MYSQL_DB=sae.const.MYSQL_DB
 MYSQL_USER=sae.const.MYSQL_USER
