@@ -41,7 +41,7 @@ class HandlerInterface:
 		elif content=='1':
 			return self.onAgPalace()
 		elif content=='testdb':
-
+			self.testDB()
 		return self.render.reply_text(self.fromUser,self.toUser,int(time.time()),content)
 
 	#获取银宫信息
