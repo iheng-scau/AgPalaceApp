@@ -1,6 +1,7 @@
 import sae.const
 import MYSQLdb
 import sys
+import logging
 
 MYSQL_DB=sae.const.MYSQL_DB
 MySQL_USER=sae.const.MySQL_USER
@@ -14,5 +15,10 @@ class MySqlDaoInterface:
 	def  __init__(self):
 		self.conn=MYSQLdb.connect(host=MYSQL_HOST,user=MySQL_USER,password=MYSQL_PASS,port=MYSQL_PORT,db=MYSQL_DB,charset='utf-8')
 
-	def testConn():
-		
+	def testConn(self):
+		cursor=self.conn.cursor()
+		sql="select * from T_AG_GOSSIP"
+		cursor.execute(sql)
+		row=cursor.fetchone()
+		logging.error(row)
+		print(row)

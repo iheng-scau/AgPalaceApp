@@ -8,6 +8,7 @@ import urllib2,json
 from lxml import etree
 #from authInterface import AuthInterface
 #from mcDaoInterface import McDaoInterface
+from mysqlDaoInterface import MySqlDaoInterface
 
 class HandlerInterface:
 
@@ -39,6 +40,8 @@ class HandlerInterface:
 			return self.render.reply_text(self.fromUser,self.toUser,int(time.time()),self.default_content)
 		elif content=='1':
 			return self.onAgPalace()
+		elif content=='testdb':
+
 		return self.render.reply_text(self.fromUser,self.toUser,int(time.time()),content)
 
 	#获取银宫信息
@@ -50,3 +53,7 @@ class HandlerInterface:
 		url='http://agpalaceapp.sinaapp.com/static/index.html'
 		logging.error(self.render.reply_pic_text(self.fromUser,self.toUser,int(time.time()),title,description,picurl,url))
 		return self.render.reply_pic_text(self.fromUser,self.toUser,int(time.time()),title,description,picurl,url)
+
+	def testDB(self):
+		test=MySqlDaoInterface()
+		test.testConn()
