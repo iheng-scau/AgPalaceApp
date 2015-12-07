@@ -27,4 +27,13 @@ class MySqlDaoInterface:
 		cursor=self.conn.cursor()
 		sql="select title,content,time from T_AG_GOSSIP g where g.key like \'%"+key+"%\' order by g.time limit 5"
 		cursor.execute(sql)
-		row=cursor.fetchall()
+		rows=cursor.fetchall()
+		list=[]
+		for row in rows:
+			for data in row:
+				title=data[0]
+				content=data[1]
+				time=data[3]
+				gossip=Gossip(title,content,time)
+				list.apend(gossip)
+		return list

@@ -6,4 +6,4 @@ class  Gossip:
 		self.title=title
 		self.content=content
 		self.time=time
-	
+		
