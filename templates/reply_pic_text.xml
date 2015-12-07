@@ -9,7 +9,7 @@ $def with(toUser,fromUser,createTime,title,description,picurl,url)
 		<item>
 			<Title><![CDATA[$title]]></Title> 
 			<Description><![CDATA[$description]]></Description>
-			<PicUrl><![CDATA[$picur]]></PicUrl>
+			<PicUrl><![CDATA[$picurl]]></PicUrl>
 			<Url><![CDATA[$url]]></Url>
 		</item>
 	</Articles>
