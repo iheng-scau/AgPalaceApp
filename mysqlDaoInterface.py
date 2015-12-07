@@ -33,7 +33,7 @@ class MySqlDaoInterface:
 			for data in row:
 				title=data[0]
 				content=data[1]
-				time=data[3]
+				time=data[2]
 				gossip=Gossip(title,content,time)
 				list.apend(gossip)
 		return list
