@@ -22,3 +22,9 @@ class MySqlDaoInterface:
 		cursor.execute(sql)
 		row=cursor.fetchone()
 		print(row[1])
+
+	def getGossip(self,key):
+		cursor=self.conn.cursor()
+		sql="select title,content,time from T_AG_GOSSIP g where g.key like \'%"+key+"%\' order by g.time limit 5"
+		cursor.execute(sql)
+		row=cursor.fetchall()
