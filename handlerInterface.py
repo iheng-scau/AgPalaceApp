@@ -3,6 +3,7 @@ import web
 import lxml
 import time
 import os
+import logging
 import urllib2,json
 from lxml import etree
 #from authInterface import AuthInterface
