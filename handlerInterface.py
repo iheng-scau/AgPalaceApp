@@ -41,6 +41,7 @@ class HandlerInterface:
 
 	#获取银宫信息
 	def onAgPalace(self):
+		logging.error(u'in')
 		title='银宫 | Ag-Palace'
 		description='Home Page of Ag-Palace'
 		picurl='http://agpalaceapp.sinaapp.com/static/err.png'
