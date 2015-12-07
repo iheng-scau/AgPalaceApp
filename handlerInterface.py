@@ -5,7 +5,7 @@ import time
 import os
 import urllib2,json
 from lxml import etree
-from authInterface import AuthInterface
+#from authInterface import AuthInterface
 
 class HandlerInterface:
 
