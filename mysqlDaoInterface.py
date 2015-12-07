@@ -1,5 +1,5 @@
 import sae.const
-import MYSQLdb
+import MySQLdb
 import sys
 import logging
 
