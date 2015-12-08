@@ -17,15 +17,15 @@ class Gossip:
 		self.time=time
 
 class Music:
-	def __init__(self,title,url,descrption):
+	def __init__(self,title,url,description):
 		self.title=title
-		self.descrption=descrption
+		self.description=description
 		self.url=url
 	def setTitle(self,title):
 		self.title=title
 
-	def setDescription(self,descrption):
-		self.descrption=descrption
+	def setDescription(self,description):
+		self.description=description
 
 	def setUrl(self,url):
 		self.url=url
