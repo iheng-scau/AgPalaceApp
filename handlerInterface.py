@@ -5,6 +5,7 @@ import time
 import os
 import logging
 import urllib2,json
+import re
 from lxml import etree
 #from authInterface import AuthInterface
 #from mcDaoInterface import McDaoInterface
@@ -34,6 +35,7 @@ class HandlerInterface:
 	#处理微信发送普通文本消息
 	def onPlainTextMsg(self):
 		xml=self.data
+
 		content=xml.find("Content").text
 		#获取欢迎消息
 		if content=='0':
@@ -45,6 +47,8 @@ class HandlerInterface:
 		elif content=='music':
 			#test_content="<xml>+/<ToUserName><![CDATA["+self.fromUser+"]]></ToUserName><FromUserName><![CDATA["+self.toUser+"]]></FromUserName><CreateTime>1449569225</CreateTime><MsgType><![CDATA[music]]></MsgType><Music><Title><![CDATA[title]]></Title><Description><![CDATA[description]]></Description><MusicUrl><![CDATA[music_url]]></MusicUrl><HQMusicUrl><![CDATA[HQ_MUSIC_Url]]></HQMusicUrl><ThumbMediaId><![CDATA[media_id]]></ThumbMediaId></Music></xml>"
 			return self.onMusic()
+		elif re.search(r'天气$',content).group()!=None:
+			return slef.onWeather()
 		elif content=='testdb':
 			self.testDB()
 		return self.render.reply_text(self.fromUser,self.toUser,int(time.time()),content)
@@ -65,7 +69,7 @@ class HandlerInterface:
 		#logging.error("recieve "+str(len(list)))
 		content=''
 		for gossip in list:
-			content=content+"["+str(gossip.time)+u" "+gossip.title+u"]\n"+gossip.content+u"\n"
+			content=content+"["+str(gossip.time)+u"__"+gossip.title+u"]\n"+gossip.content+u"\n"
 		return self.render.reply_text(self.fromUser,self.toUser,int(time.time()),content)
 
 	def onMusic(self):
@@ -75,6 +79,14 @@ class HandlerInterface:
 		#print(self.render.reply_music(self.fromUser,self.toUser,int(time.time()),music.title,music.description,music.url))
 		#return self.render.reply_music(self.fromUser,self.toUser,int(time.time()),music.title,music.description,music.url)
 		return self.render.reply_pic_text(self.fromUser,self.toUser,int(time.time()),music.title,music.description,music.picurl,music.url)
+
+	def onWeather(self):
+		url='http://php.weather.sina.com.cn/xml.php?city=%B1%B1%BE%A9&password=DJOYnieT8234jlsK&day=0'
+		req=urllib2.Request(url)
+		res=urllib2.urlopen(req)
+		data=res.read()
+		print(data)
+
 
 	def testDB(self):
 		test=MySqlDaoInterface()
