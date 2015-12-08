@@ -60,6 +60,7 @@ class HandlerInterface:
 		gossip_dao=MySqlDaoInterface()
 		list=gossip_dao.getGossip()
 		#logging.error("recieve "+str(len(list)))
+		content=''
 		for gossip in list:
 			content=content+"["+gossip.title+u"-"+str(gossip.time)+u"]\n"+gossip.content+u"\n"
 		return self.render.reply_text(self.fromUser,self.toUser,int(time.time()),content)
