@@ -60,7 +60,7 @@ class HandlerInterface:
 		gossip_dao=MySqlDaoInterface()
 		list=gossip_dao.getGossip()
 		for gossip in list:
-			content=gossip.title+u"-"+str(gossip.time)+u"\n"+gossip.content+u"\n"
+			content="["+gossip.title+u"-"+str(gossip.time)+u"]\n"+gossip.content+u"\n"
 		return self.render.reply_text(self.fromUser,self.toUser,int(time.time()),content)
 
 	def testDB(self):

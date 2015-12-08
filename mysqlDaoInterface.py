@@ -30,13 +30,13 @@ class MySqlDaoInterface:
 		sql="select title,content,time from T_AG_GOSSIP g order by g.time limit 5"
 		cursor.execute(sql)
 		rows=cursor.fetchall()
-		list=[]
 		for row in rows:
 			title=row[0]
 			content=row[1]
 			time=row[2]
 			gossip=Gossip(title,content,time)
 			list.append(gossip)
+		self.conn.close()
 		return list
 
 	def getGossipBykey(self,key):
@@ -46,10 +46,10 @@ class MySqlDaoInterface:
 		rows=cursor.fetchall()
 		list=[]
 		for row in rows:
-			for data in row:
-				title=data[0]
-				content=data[1]
-				time=data[2]
-				gossip=Gossip(title,content,time)
-				list.apend(gossip)
+			title=row[0]
+			content=row[1]
+			time=row[2]
+			gossip=Gossip(title,content,time)
+			list.apend(gossip)
+		self.conn.close()
 		return list
