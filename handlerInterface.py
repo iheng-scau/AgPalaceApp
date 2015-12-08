@@ -41,7 +41,7 @@ class HandlerInterface:
 		elif content=='1':
 			return self.onAgPalace()
 		elif content=='4':
-			self.onGossip()
+			return self.onGossip()
 		elif content=='testdb':
 			self.testDB()
 		return self.render.reply_text(self.fromUser,self.toUser,int(time.time()),content)
@@ -60,7 +60,8 @@ class HandlerInterface:
 		gossip_dao=MySqlDaoInterface()
 		list=gossip_dao.getGossip()
 		for gossip in list:
-			print gossip
+			content=gossip.title+"-"+gossip.time+"\n"+gossip.content+"\n"
+		return self.render.reply_text(self.fromUser,self.toUser,int(time.time()),content)
 
 	def testDB(self):
 		test=MySqlDaoInterface()
