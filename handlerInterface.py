@@ -49,7 +49,9 @@ class HandlerInterface:
 			#test_content="<xml>+/<ToUserName><![CDATA["+self.fromUser+"]]></ToUserName><FromUserName><![CDATA["+self.toUser+"]]></FromUserName><CreateTime>1449569225</CreateTime><MsgType><![CDATA[music]]></MsgType><Music><Title><![CDATA[title]]></Title><Description><![CDATA[description]]></Description><MusicUrl><![CDATA[music_url]]></MusicUrl><HQMusicUrl><![CDATA[HQ_MUSIC_Url]]></HQMusicUrl><ThumbMediaId><![CDATA[media_id]]></ThumbMediaId></Music></xml>"
 			return self.onMusic()
 		elif re.search(r'天气$',str(content.encode('utf-8')))!=None:
-			return self.onWeather()
+			len=len(content)
+			key=content[0:len-2]
+			return self.onWeather(key)
 		elif content=='testdb':
 			self.testDB()
 		return self.render.reply_text(self.fromUser,self.toUser,int(time.time()),content)
@@ -81,8 +83,9 @@ class HandlerInterface:
 		#return self.render.reply_music(self.fromUser,self.toUser,int(time.time()),music.title,music.description,music.url)
 		return self.render.reply_pic_text(self.fromUser,self.toUser,int(time.time()),music.title,music.description,music.picurl,music.url)
 
-	def onWeather(self):
-		url='http://php.weather.sina.com.cn/xml.php?city=%B1%B1%BE%A9&password=DJOYnieT8234jlsK&day=0'
+	def onWeather(self,key):
+		key=urllib.urlencode(key)
+		url='http://php.weather.sina.com.cn/xml.php?city'+key+'&password=DJOYnieT8234jlsK&day=1'
 		req=urllib2.Request(url)
 		res=urllib2.urlopen(req)
 		data=res.read()
