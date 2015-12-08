@@ -11,5 +11,4 @@ $def with(toUser,fromUser,createTime,title,description,music_url)
 <HQMusicUrl><![CDATA[HQ_MUSIC_Url]]></HQMusicUrl>
 <ThumbMediaId><![CDATA[media_id]]></ThumbMediaId>
 </Music>
-<FuncFlag>0</FuncFlag>
 </xml>
