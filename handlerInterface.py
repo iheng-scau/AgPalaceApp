@@ -37,7 +37,6 @@ class HandlerInterface:
 		xml=self.data
 
 		content=xml.find("Content").text
-		print(content)
 		print(re.search(r'天气$',str(content.encode('utf-8')))!=None)
 		#获取欢迎消息
 		if content=='0':
@@ -49,7 +48,7 @@ class HandlerInterface:
 		elif content=='music':
 			#test_content="<xml>+/<ToUserName><![CDATA["+self.fromUser+"]]></ToUserName><FromUserName><![CDATA["+self.toUser+"]]></FromUserName><CreateTime>1449569225</CreateTime><MsgType><![CDATA[music]]></MsgType><Music><Title><![CDATA[title]]></Title><Description><![CDATA[description]]></Description><MusicUrl><![CDATA[music_url]]></MusicUrl><HQMusicUrl><![CDATA[HQ_MUSIC_Url]]></HQMusicUrl><ThumbMediaId><![CDATA[media_id]]></ThumbMediaId></Music></xml>"
 			return self.onMusic()
-		elif re.search(r'天气$',content)!=None:
+		elif re.search(r'天气$',str(content.encode('utf-8'))!=None:
 			return slef.onWeather()
 		elif content=='testdb':
 			self.testDB()
