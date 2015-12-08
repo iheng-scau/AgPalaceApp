@@ -30,6 +30,7 @@ class MySqlDaoInterface:
 		sql="select title,content,time from T_AG_GOSSIP g order by g.time limit 5"
 		cursor.execute(sql)
 		rows=cursor.fetchall()
+		list=[]
 		for row in rows:
 			title=row[0]
 			content=row[1]
@@ -37,6 +38,7 @@ class MySqlDaoInterface:
 			gossip=Gossip(title,content,time)
 			list.append(gossip)
 		self.conn.close()
+		logging.error("return "+len(list)+" item")
 		return list
 
 	def getGossipBykey(self,key):
