@@ -42,8 +42,8 @@ class HandlerInterface:
 			return self.onAgPalace()
 		elif content=='4':
 			return self.onGossip()
-		elif content=='music'
-		return self.onMusic()
+		elif content=='music':
+			return self.onMusic()
 		elif content=='testdb':
 			self.testDB()
 		return self.render.reply_text(self.fromUser,self.toUser,int(time.time()),content)
