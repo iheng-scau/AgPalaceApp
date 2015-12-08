@@ -85,7 +85,7 @@ class HandlerInterface:
 
 	def onWeather(self,key):
 		key=urllib.urlencode(key)
-		url='http://php.weather.sina.com.cn/xml.php?city'+key+'&password=DJOYnieT8234jlsK&day=0'
+		url='http://php.weather.sina.com.cn/xml.php?city='+key+'&password=DJOYnieT8234jlsK&day=0'
 		req=urllib2.Request(url)
 		res=urllib2.urlopen(req)
 		data=res.read()
