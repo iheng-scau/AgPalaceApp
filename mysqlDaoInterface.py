@@ -32,12 +32,11 @@ class MySqlDaoInterface:
 		rows=cursor.fetchall()
 		list=[]
 		for row in rows:
-			for data in row:
-				title=data[0]
-				content=data[1]
-				time=data[2]
-				gossip=Gossip(title,content,time)
-				list.apend(gossip)
+			title=row[0]
+			content=row[1]
+			time=row[2]
+			gossip=Gossip(title,content,time)
+			list.append(gossip)
 		return list
 
 	def getGossipBykey(self,key):
