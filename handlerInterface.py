@@ -71,11 +71,10 @@ class HandlerInterface:
 	def onMusic(self):
 		music_dao=MySqlDaoInterface()
 		music=music_dao.getRandomMusic()
-		music_logo_url='http://agpalaceapp.sinaapp.com/static/img/cloudmusic_logo.jpg'
 		print(self.render.reply_music(self.fromUser,self.toUser,int(time.time()),music.title,music.description,music.url))
 		#return self.render.reply_music(self.fromUser,self.toUser,int(time.time()),music.title,music.description,music.url)
-		return self.render.reply_pic_text(self.fromUser,self.toUser,int(time.time()),music.title,music.description,music_logo_url,music.url)
-	
+		return self.render.reply_pic_text(self.fromUser,self.toUser,int(time.time()),music.title,music.description,music.picurl,music.url)
+
 	def testDB(self):
 		test=MySqlDaoInterface()
 		test.testConn()

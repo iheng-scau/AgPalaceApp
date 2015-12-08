@@ -66,9 +66,9 @@ class MySqlDaoInterface:
 		music_num=row[0]
 		random_num=random.randint(0,music_num-1)
 
-		sql="select title,url,description from T_AG_MUSIC limit "+str(random_num)+",1"
+		sql="select title,url,description,picurl from T_AG_MUSIC limit "+str(random_num)+",1"
 		cursor.execute(sql)
 		row=cursor.fetchone()
 
-		music=Music(row[0],row[1],row[2])
+		music=Music(row[0],row[1],row[2],row[3])
 		return music
