@@ -75,9 +75,7 @@ class HandlerInterface:
 		print(self.render.reply_music(self.fromUser,self.toUser,int(time.time()),music.title,music.description,music.url))
 		#return self.render.reply_music(self.fromUser,self.toUser,int(time.time()),music.title,music.description,music.url)
 		return self.render.reply_pic_text(self.fromUser,self.toUser,int(time.time()),music.title,music.description,music_logo_url,music.url)
-
-	def 
-
+	
 	def testDB(self):
 		test=MySqlDaoInterface()
 		test.testConn()
