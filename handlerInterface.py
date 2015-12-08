@@ -21,7 +21,7 @@ class HandlerInterface:
 		self.toUser=data.find("ToUserName").text
 		self.default_content=u"欢迎关注银宫微信公众账号,输入相应关键字可以获取信息:\n"+\
 		u"[1].银宫|Ag-Palace\n[2].银民|Ager\n[3].银学|Agadamic\n"+\
-		u"[4].银闻|Ag-News\n[5].田纳西-Tennessee Co.unLtd\n"+\
+		u"[4].八卦|Gossip\n[5].田纳西|Tennessee Co.unLtd\n"+\
 		u"[6].活动|Agitivity\n[7].你懂的|Oh,shit!\n[8].关于/开发者|About/Developer\n"+\
 		u"*回复相应的数字获取相关信息.\n"+\
 		u"*回复0可再次获得本消息.\n"+\
@@ -65,15 +65,16 @@ class HandlerInterface:
 		#logging.error("recieve "+str(len(list)))
 		content=''
 		for gossip in list:
-			content=content+"["+gossip.title+u"-"+str(gossip.time)+u"]\n"+gossip.content+u"\n"
+			content=content+"["+str(gossip.time)+u" "+gossip.title+u"]\n"+gossip.content+u"\n"
 		return self.render.reply_text(self.fromUser,self.toUser,int(time.time()),content)
 
 	def onMusic(self):
 		music_dao=MySqlDaoInterface()
 		music=music_dao.getRandomMusic()
-		print(self.render.reply_music(self.fromUser,self.toUser,int(time.time()),music.title,music.description,music.url))
-		return self.render.reply_music(self.fromUser,self.toUser,int(time.time()),music.title,music.description,music.url)
-		#return self.render.reply_pic_text(self.fromUser,self.toUser,int(time.time()),music.title,music.description,music.picurl,music.url)
+		#微信接口的模板是错的
+		#print(self.render.reply_music(self.fromUser,self.toUser,int(time.time()),music.title,music.description,music.url))
+		#return self.render.reply_music(self.fromUser,self.toUser,int(time.time()),music.title,music.description,music.url)
+		return self.render.reply_pic_text(self.fromUser,self.toUser,int(time.time()),music.title,music.description,music.picurl,music.url)
 
 	def testDB(self):
 		test=MySqlDaoInterface()
