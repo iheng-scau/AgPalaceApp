@@ -3,7 +3,9 @@ import sae.const
 import MySQLdb
 import sys
 import logging
+import random
 from entities import Gossip
+from entities import Music
 
 
 MYSQL_DB=sae.const.MYSQL_DB
@@ -55,3 +57,18 @@ class MySqlDaoInterface:
 			list.apend(gossip)
 		self.conn.close()
 		return list
+
+	def getRandomMusic(self):
+		cursor=self.conn.cursor()
+		sql="select count(*) from T_AG_MUSIC"
+		cursor.execute(sql)
+		row=cursor.fetchone()
+		music_num=row[0]
+		random_num=random.randint(0,music_num-1)
+
+		sql="select title,url,description from T_AG_MUSIC limit "+random_num+",1"
+		cursor.execute(sql)
+		row=cursor.fetchone()
+
+		music=Music(row[0],row[1],row[2])
+		return music

@@ -42,6 +42,8 @@ class HandlerInterface:
 			return self.onAgPalace()
 		elif content=='4':
 			return self.onGossip()
+		elif content=='music'
+		return self.onMusic()
 		elif content=='testdb':
 			self.testDB()
 		return self.render.reply_text(self.fromUser,self.toUser,int(time.time()),content)
@@ -55,7 +57,7 @@ class HandlerInterface:
 		url='http://agpalaceapp.sinaapp.com/static/index.html'
 		logging.error(self.render.reply_pic_text(self.fromUser,self.toUser,int(time.time()),title,description,picurl,url))
 		return self.render.reply_pic_text(self.fromUser,self.toUser,int(time.time()),title,description,picurl,url)
-	
+
 	def onGossip(self):
 		gossip_dao=MySqlDaoInterface()
 		list=gossip_dao.getGossip()
@@ -64,6 +66,11 @@ class HandlerInterface:
 		for gossip in list:
 			content=content+"["+gossip.title+u"-"+str(gossip.time)+u"]\n"+gossip.content+u"\n"
 		return self.render.reply_text(self.fromUser,self.toUser,int(time.time()),content)
+
+	def onMusic(self):
+		music_dao=MySqlDaoInterface()
+		music=music_dao.getRandomMusic()
+		return self.render.reply_music(self.fromUser,self.toUser,int(time.time()),music.title,music.description,music.url,'','')
 
 	def testDB(self):
 		test=MySqlDaoInterface()

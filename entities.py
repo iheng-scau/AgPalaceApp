@@ -15,4 +15,18 @@ class Gossip:
 
 	def setTime(self,time):
 		self.time=time
+
+class Music:
+	def __init__(self,title,url,descrption):
+		self.title=title
+		self.descrption=descrption
+		self.url=url
+	def setTitle(self,title):
+		self.title=title
+
+	def setDescription(self,descrption):
+		self.descrption=descrption
+
+	def setUrl(self,url):
+		self.url=url
 		
