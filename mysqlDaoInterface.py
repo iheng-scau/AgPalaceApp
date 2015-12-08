@@ -38,7 +38,7 @@ class MySqlDaoInterface:
 			gossip=Gossip(title,content,time)
 			list.append(gossip)
 		self.conn.close()
-		logging.error("return "+len(list)+" item")
+		logging.error("return "+str(len(list))+" item")
 		return list
 
 	def getGossipBykey(self,key):
