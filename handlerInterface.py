@@ -38,7 +38,7 @@ class HandlerInterface:
 
 		content=xml.find("Content").text
 		print(content)
-		print(re.search(r'天气$',str(content.decode('utf-8')))!=None)
+		print(re.search(r'天气$',str(content.encode('utf-8')))!=None)
 		#获取欢迎消息
 		if content=='0':
 			return self.render.reply_text(self.fromUser,self.toUser,int(time.time()),self.default_content)
