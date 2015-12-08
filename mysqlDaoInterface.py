@@ -27,7 +27,7 @@ class MySqlDaoInterface:
 
 	def getGossip(self):
 		cursor=self.conn.cursor()
-		sql="select title,content,time from T_AG_GOSSIP g order by g.time limit 5"
+		sql="select title,content,time from T_AG_GOSSIP g order by g.time desc limit 5"
 		cursor.execute(sql)
 		rows=cursor.fetchall()
 		list=[]
@@ -43,7 +43,7 @@ class MySqlDaoInterface:
 
 	def getGossipBykey(self,key):
 		cursor=self.conn.cursor()
-		sql="select title,content,time from T_AG_GOSSIP g where g.key like \'%"+key+"%\' order by g.time limit 5"
+		sql="select title,content,time from T_AG_GOSSIP g where g.key like \'%"+key+"%\' order by g.time desc limit 5 "
 		cursor.execute(sql)
 		rows=cursor.fetchall()
 		list=[]
