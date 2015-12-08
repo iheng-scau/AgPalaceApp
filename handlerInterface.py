@@ -70,8 +70,8 @@ class HandlerInterface:
 	def onMusic(self):
 		music_dao=MySqlDaoInterface()
 		music=music_dao.getRandomMusic()
-		print(self.render.reply_music(self.fromUser,self.toUser,int(time.time()),music.title,music.description,music.url))
-		return self.render.reply_music(self.fromUser,self.toUser,int(time.time()),music.title,music.description,music.url)
+		print(self.render.reply_music(self.fromUser,self.toUser,int(time.time()),music.title,music.description,''))
+		return self.render.reply_music(self.fromUser,self.toUser,int(time.time()),music.title,music.description,'')
 
 	def testDB(self):
 		test=MySqlDaoInterface()
