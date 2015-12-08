@@ -37,6 +37,7 @@ class HandlerInterface:
 		xml=self.data
 
 		content=xml.find("Content").text
+		print(content)
 		#获取欢迎消息
 		if content=='0':
 			return self.render.reply_text(self.fromUser,self.toUser,int(time.time()),self.default_content)
