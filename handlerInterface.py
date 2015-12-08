@@ -40,6 +40,8 @@ class HandlerInterface:
 			return self.render.reply_text(self.fromUser,self.toUser,int(time.time()),self.default_content)
 		elif content=='1':
 			return self.onAgPalace()
+		elif content=='4':
+			self.onGossip()
 		elif content=='testdb':
 			self.testDB()
 		return self.render.reply_text(self.fromUser,self.toUser,int(time.time()),content)
@@ -53,6 +55,12 @@ class HandlerInterface:
 		url='http://agpalaceapp.sinaapp.com/static/index.html'
 		logging.error(self.render.reply_pic_text(self.fromUser,self.toUser,int(time.time()),title,description,picurl,url))
 		return self.render.reply_pic_text(self.fromUser,self.toUser,int(time.time()),title,description,picurl,url)
+	
+	def onGossip(self):
+		gossip_dao=MySqlDaoInterface()
+		list=gossip_dao.getGossip()
+		for gossip in list:
+			print gossip
 
 	def testDB(self):
 		test=MySqlDaoInterface()

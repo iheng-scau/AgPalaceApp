@@ -3,6 +3,8 @@ import sae.const
 import MySQLdb
 import sys
 import logging
+from entities import Gossip
+
 
 MYSQL_DB=sae.const.MYSQL_DB
 MYSQL_USER=sae.const.MYSQL_USER
@@ -23,7 +25,22 @@ class MySqlDaoInterface:
 		row=cursor.fetchone()
 		print(row[1])
 
-	def getGossip(self,key):
+	def getGossip(self):
+		cursor=self.conn.cursor()
+		sql="select title,content,time from T_AG_GOSSIP g order by g.time limit 5"
+		cursor.execute(sql)
+		rows=cursor.fetchall()
+		list=[]
+		for row in rows:
+			for data in row:
+				title=data[0]
+				content=data[1]
+				time=data[2]
+				gossip=Gossip(title,content,time)
+				list.apend(gossip)
+		return list
+
+	def getGossipBykey(self,key):
 		cursor=self.conn.cursor()
 		sql="select title,content,time from T_AG_GOSSIP g where g.key like \'%"+key+"%\' order by g.time limit 5"
 		cursor.execute(sql)
