@@ -43,9 +43,8 @@ class HandlerInterface:
 		elif content=='4':
 			return self.onGossip()
 		elif content=='music':
-			test_content="<xml>+/<ToUserName><![CDATA["+self.fromUser+"]]></ToUserName><FromUserName><![CDATA["+self.toUser+"]]></FromUserName><CreateTime>1449569225</CreateTime><MsgType><![CDATA[music]]></MsgType><Music><Title><![CDATA[title]]></Title><Description><![CDATA[description]]></Description><MusicUrl><![CDATA[music_url]]></MusicUrl><HQMusicUrl><![CDATA[HQ_MUSIC_Url]]></HQMusicUrl><ThumbMediaId><![CDATA[media_id]]></ThumbMediaId></Music></xml>"
-			#return self.onMusic()
-			return test_content
+			#test_content="<xml>+/<ToUserName><![CDATA["+self.fromUser+"]]></ToUserName><FromUserName><![CDATA["+self.toUser+"]]></FromUserName><CreateTime>1449569225</CreateTime><MsgType><![CDATA[music]]></MsgType><Music><Title><![CDATA[title]]></Title><Description><![CDATA[description]]></Description><MusicUrl><![CDATA[music_url]]></MusicUrl><HQMusicUrl><![CDATA[HQ_MUSIC_Url]]></HQMusicUrl><ThumbMediaId><![CDATA[media_id]]></ThumbMediaId></Music></xml>"
+			return self.onMusic()
 		elif content=='testdb':
 			self.testDB()
 		return self.render.reply_text(self.fromUser,self.toUser,int(time.time()),content)
@@ -72,8 +71,12 @@ class HandlerInterface:
 	def onMusic(self):
 		music_dao=MySqlDaoInterface()
 		music=music_dao.getRandomMusic()
+		music_logo_url='http://agpalaceapp.sinaapp.com/static/img/cloudmusic_logo.jpg'
 		print(self.render.reply_music(self.fromUser,self.toUser,int(time.time()),music.title,music.description,music.url))
-		return self.render.reply_music(self.fromUser,self.toUser,int(time.time()),music.title,music.description,music.url)
+		#return self.render.reply_music(self.fromUser,self.toUser,int(time.time()),music.title,music.description,music.url)
+		return self.render.reply_pic_text(self.fromUser,self.toUser,int(time.time()),music.title,music.description,music_logo_url,music.url)
+
+	def 
 
 	def testDB(self):
 		test=MySqlDaoInterface()
