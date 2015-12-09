@@ -80,5 +80,5 @@ class MySqlDaoInterface:
 		sql="select title,content,date,participants,notes from T_AG_AGITIVITY a order by a.date desc limit 0,1"
 		cursor.execute(sql)
 		row=cursor.fetchone()
-		agitivity=Agitivity(row[0],row[1],row[2],row[3])
+		agitivity=Agitivity(row[0],row[1],row[2],row[3],row[4])
 		return agitivity
