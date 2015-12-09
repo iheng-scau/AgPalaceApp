@@ -6,6 +6,7 @@ import logging
 import random
 from entities import Gossip
 from entities import Music
+from entities import Agitivity
 
 
 MYSQL_DB=sae.const.MYSQL_DB
@@ -71,4 +72,13 @@ class MySqlDaoInterface:
 		row=cursor.fetchone()
 
 		music=Music(row[0],row[1],row[2],row[3])
+		self.conn.close()
 		return music
+
+	def getLastAgitivity(self):
+		cursor=self.conn.cursor()
+		sql="select title,content,date,participants,notes from T_AG_AGITIVITY a order by a.date desc limit 0,1"
+		cursor.execute(sql)
+		row=cursor.fetchone()
+		agitivity=Agitivity(row[0],row[1],row[2],row[3])
+		return agitivity

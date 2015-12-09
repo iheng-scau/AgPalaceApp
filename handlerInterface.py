@@ -48,6 +48,8 @@ class HandlerInterface:
 		#获取最新的八卦
 		elif content=='4':
 			return self.onGossip()
+		elif content=='6':
+			return self.onAgitivity()
 		elif content=='7':
 			return self.onBonus()
 		#获取音乐推荐
@@ -120,9 +122,14 @@ class HandlerInterface:
 		else:
 			content='尼玛，这是什么地方啊，我都查不到这旮旯的天气~'
 			return self.render.reply_text(self.fromUser,self.toUser,int(time.time()),content)
-	
+	def onAgitivity(self):
+		agitivity_dao=MySqlDaoInterface()
+		agitivity=agitivity_dao.getLastAgitivity()
+		content="[银宫活动公告牌]\n%s-活动时间:%s\n活动描述:%s\n备注:%s\n-----------------\n回复\'+1\'即可参加该活动哦~"%(agitivity.title,agitivity.date,agitivity.content,agitivity.note)
+		return self.render.reply_text(self.fromUser,self.toUser,int(time.time()),content)
+
 	def onBonus(self):
-		list=[u"你以为本大人会推送这些么？",u"家庭教师の亂ガヴァネス.avi",u"制服フェティシズム.avi",u"可爱いメイド爆乳.rmvb",u"呵呵~你还是图样图森破..."]
+		list=[u"你以为本大人会推送这些么？",u"-家庭教师の亂ガヴァネス.avi",u"-制服フェティシズム.avi",u"-可爱いメイド爆乳.rmvb",u"呵呵~你还是图样图森破...不给你推送地道战,红星照我去战斗就不错了~"]
 		content='\n'.join(list)
 		return self.render.reply_text(self.fromUser,self.toUser,int(time.time()),content)
 
