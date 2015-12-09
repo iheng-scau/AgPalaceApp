@@ -92,20 +92,21 @@ class HandlerInterface:
 		res=urllib2.urlopen(req)
 		data=res.read()
 
-		data=str(data)
-		print(data)
+		#data=str(data)
 
 		xml=etree.fromstring(data)
-		city=xml.find("Weather").find("city").text
-		status1=xml.find("Weather").find("status1").text
-		status2=xml.find("Weather").find("status2").text
-		temperature1=xml.find("Weather").find("temperature1").text
-		temperature2=xml.find("Weather").find("temperature2").text
-		pollution_s=xml.find("Weather").find("pollution_s").text
-		content=u'%s\n[%s/%s]\n温度:%s~%s°C\n%s'%(city,status1,status2,temperature1,temperature2,pollution_s)
-		#content=city+u'\n'+u'['+status1+u'/'+status2+u']\n'+u'温度:'+temperature1+u'~'+temperature2+u'°C\n'+pollution_s
-		return self.render.reply_text(self.fromUser,self.toUser,int(time.time()),content)
-
+		if xml.find("Weather")!=None:	
+			city=xml.find("Weather").find("city").text
+		    status1=xml.find("Weather").find("status1").text
+		    status2=xml.find("Weather").find("status2").text
+		    temperature1=xml.find("Weather").find("temperature1").text
+		    temperature2=xml.find("Weather").find("temperature2").text
+		    pollution=xml.find("Weather").find("pollution").text
+		    content=u'%s\n[%s/%s]\n温度:%s~%s°C\n污染指数:%s'%(city,status2,status1,temperature2,temperature1,pollution)
+		    return self.render.reply_text(self.fromUser,self.toUser,int(time.time()),content)
+		else:
+			content='尼玛，这是什么地方啊，我都查不到这旮旯的天气~'
+			return self.render.reply_text(self.fromUser,self.toUser,int(time.time()),content)
 
 	def testDB(self):
 		test=MySqlDaoInterface()
