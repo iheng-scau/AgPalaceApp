@@ -86,13 +86,13 @@ class HandlerInterface:
 
 	def onWeather(self,key):
 		key=urllib.quote(key)
-		print(key)
+
 		url='http://php.weather.sina.com.cn/xml.php?city='+key+'&password=DJOYnieT8234jlsK&day=0'
-		print(url)
 		req=urllib2.Request(url)
 		res=urllib2.urlopen(req)
 		data=res.read()
-		xml=etree.fromstring(data)
+		
+		xml=etree.fromstring(bytes.decode(data))
 		city=xml.find('city').text
 		status1=xml.find('status1').text
 		status2=xml.find('status2').text
