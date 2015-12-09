@@ -7,6 +7,7 @@ import random
 from entities import Gossip
 from entities import Music
 from entities import Agitivity
+from entities import Ager
 
 
 MYSQL_DB=sae.const.MYSQL_DB
@@ -82,3 +83,11 @@ class MySqlDaoInterface:
 		row=cursor.fetchone()
 		agitivity=Agitivity(row[0],row[1],row[2],row[3],row[4])
 		return agitivity
+
+	def getAgerInfo(self):
+		cursor=self.conn.cursor()
+		sql=u"select name,description,img_url,wechat from T_AG_AGER a where a.name='李伟健'"
+		cursor.execute(sql)
+		row=cursor.fetchone()
+		ager=Ager(row[0],row[1],row[2],row[3])
+		return ager

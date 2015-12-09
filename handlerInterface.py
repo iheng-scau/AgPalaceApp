@@ -25,7 +25,8 @@ class HandlerInterface:
 		u"[1].银宫|Ag-Palace\n[2].银民|Ager\n[3].银学|Agadamic\n"+\
 		u"[4].八卦|Gossip\n[5].田纳西|Tennessee Co.unLtd\n"+\
 		u"[6].活动|Agitivity\n[7].你懂的|Oh,shit!\n[8].关于/开发者|About/Developer\n"+\
-		u"*回复相应的数字获取相关信息.\n"+\
+		u"[i].使用说明|Instructions\n"+\
+		u"*回复相应的数字获取相关信息.所有包含的功能未全部列出,隐藏功能等你发现,你懂的~\n"+\
 		u"*回复0可再次获得本消息.\n"+\
 		u"*Ag-Palace平台的功能还在不断完善中，如有意见或建议可联系我们:)"
 
@@ -45,6 +46,8 @@ class HandlerInterface:
 		#获取银宫主页图文消息
 		elif content=='1':
 			return self.onAgPalace()
+		elif content=='2':
+			return self.onAger()
 		#获取最新的八卦
 		elif content=='4':
 			return self.onGossip()
@@ -80,6 +83,10 @@ class HandlerInterface:
 		url='http://agpalaceapp.sinaapp.com/static/index.html'
 		logging.error(self.render.reply_pic_text(self.fromUser,self.toUser,int(time.time()),title,description,picurl,url))
 		return self.render.reply_pic_text(self.fromUser,self.toUser,int(time.time()),title,description,picurl,url)
+	def onAger(self):
+		ager_dao=MySqlDaoInterface()
+		ager=ager_dao.getAgerInfo()
+		return self.render.reply_pic_text(self.fromUser,self.toUser,int(time.time()),ager.name,ager.description,ager.img_url,'')
 
 	def onGossip(self):
 		gossip_dao=MySqlDaoInterface()
@@ -125,7 +132,7 @@ class HandlerInterface:
 	def onAgitivity(self):
 		agitivity_dao=MySqlDaoInterface()
 		agitivity=agitivity_dao.getLastAgitivity()
-		content=u"[银宫活动公告牌]\n%s-活动时间:%s\n活动描述:%s\n备注:%s\n-----------------\n回复\'+1\'即可参加该活动哦~"%(agitivity.title,agitivity.date,agitivity.content,agitivity.note)
+		content=u"[银宫活动公告牌]\n%s-活动时间:%s\n活动描述:%s\n备注:%s\n-----------------\n回复 +1 即可参加该活动哦~"%(agitivity.title,agitivity.date,agitivity.content,agitivity.note)
 		return self.render.reply_text(self.fromUser,self.toUser,int(time.time()),content)
 
 	def onBonus(self):
@@ -141,6 +148,8 @@ class HandlerInterface:
 	def onTranslate(self):
 		url="虽然本大人的英语很好,应付你这水平的翻译,去问有道就够了:\nhttp://fanyi.youdao.com/"
 		return self.render.reply_text(self.fromUser,self.toUser,int(time.time()),url)
+	def onAutoReply(self):
+
 	def testDB(self):
 		test=MySqlDaoInterface()
 		test.testConn()

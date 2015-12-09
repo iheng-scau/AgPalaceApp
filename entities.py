@@ -40,3 +40,9 @@ class Agitivity:
 		self.participant=participant
 		self.date=date
 		self.note=note
+class Ager:
+	def __init__(self,name,description,img_url,wechat):
+		self.name=name
+		self.description=description
+		self.img_url=img_url
+		self.wechat=wechat
