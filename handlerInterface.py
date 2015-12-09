@@ -113,7 +113,7 @@ class HandlerInterface:
 
 	def onAbout(self):
 		content=u'银宫公众平台是基于Python开发的微信公众平台并且已经在Github上面作为开源项目,现部署在新浪云(SAE),存储使用MySQL和Memcache结合的方式.\n'+\
-		u'开发者:iheng\n平台版本:0.1\nPython版本:2.7.x\n上线时间:2015-12-03\nGithub:点击详情可进入项目Github主页'
+		u'-----------------\n项目信息:\n开发者: iheng-scau\n平台版本: 0.1\nPython: 2.7.x\n上线时间: 2015-12-03\nGithub主页: https://github.com/iheng-scau/AgPalaceApp(点击详情可进入项目Github主页)'
 		return self.render.reply_pic_text(self.fromUser,self.toUser,int(time.time()),'关于银宫公众平台/开发者',content,'','')
 
 	def onMusic(self):
