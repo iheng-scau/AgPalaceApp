@@ -92,7 +92,16 @@ class HandlerInterface:
 		req=urllib2.Request(url)
 		res=urllib2.urlopen(req)
 		data=res.read()
-		print(data)
+		xml=etree.fromstring(data.decode('utf-8'))
+		city=xml.find('city').text
+		status1=xml.find('status1').text
+		status2=xml.find('status2').text
+		temperature1=xml.find('temperature1').text
+		temperature2=xml.find('temperature2').text
+		pollution_s=xml.find('pollution_s').text
+
+		content=city+'\n'+'['status1+'/'+status2+']\n'+'温度:'+temperature1+'~'+temperature2+'°C\n'+pollution_s
+		return self.render.reply_text(self.fromUser,self.toUser,int(time.time()),content)
 
 
 	def testDB(self):
