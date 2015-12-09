@@ -121,9 +121,9 @@ class HandlerInterface:
 	
 	#银宫/10班通讯录功能
 	def onContact(self):
-
+		return
 	def onAdultVideo(self):
-		
+		return
 	def onTranslate(self):
 		url="http://fanyi.youdao.com/"
 		return self.render.reply_text(self.fromUser,self.toUser,int(time.time()),url)
