@@ -42,12 +42,16 @@ class HandlerInterface:
 		#获取欢迎消息
 		if content=='0':
 			return self.render.reply_text(self.fromUser,self.toUser,int(time.time()),self.default_content)
+		#获取银宫主页图文消息
 		elif content=='1':
 			return self.onAgPalace()
+		#获取最新的八卦
 		elif content=='4':
 			return self.onGossip()
+		#获取音乐推荐
 		elif content=='music':
 			return self.onMusic()
+		#获取指定城市的天气
 		elif re.search(r'天气$',str(content.encode('utf-8')))!=None:
 			length=len(content)
 			if(length==2):
@@ -56,6 +60,9 @@ class HandlerInterface:
 			key=content[0:length-2]
 			key=key.encode('gb2312')
 			return self.onWeather(key)
+		elif content=='翻译':
+			return self.onTranslate(self)
+		#测试数据库，开发用
 		elif content=='testdb':
 			self.testDB()
 		return self.render.reply_text(self.fromUser,self.toUser,int(time.time()),content)
@@ -111,7 +118,15 @@ class HandlerInterface:
 		else:
 			content='尼玛，这是什么地方啊，我都查不到这旮旯的天气~'
 			return self.render.reply_text(self.fromUser,self.toUser,int(time.time()),content)
+	
+	#银宫/10班通讯录功能
+	def onContact(self):
 
+	def onAdultVideo(self):
+
+	def onTranslate(self,content):
+		url="http://fanyi.youdao.com/"
+		return self.render.reply_text(self.fromUser,self.toUser,int(time.time()),url)
 	def testDB(self):
 		test=MySqlDaoInterface()
 		test.testConn()
