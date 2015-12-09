@@ -48,6 +48,8 @@ class HandlerInterface:
 		#获取最新的八卦
 		elif content=='4':
 			return self.onGossip()
+		elif content=='7':
+			return self.onBonus()
 		#获取音乐推荐
 		elif content=='music':
 			return self.onMusic()
@@ -97,7 +99,7 @@ class HandlerInterface:
 	def onWeather(self,key):
 		key=urllib.quote(key)
 
-		url='http://php.weather.sina.com.cn/xml.php?city='+key+'&password=DJOYnieT8234jlsK&day=0'
+		url='http://php.weather.sina.com.cn/xml.php?city='+key+'&password=DJOYnieT8234jlsK&day=1'
 		req=urllib2.Request(url)
 		res=urllib2.urlopen(req)
 		data=res.read()
@@ -113,12 +115,17 @@ class HandlerInterface:
 			pollution_l=xml.find("Weather").find("pollution_l").text
 			zwx_s=xml.find("Weather").find("zwx_s").text
 			chy_shuoming=xml.find("Weather").find("chy_shuoming").text
-			content=u'%s\n[%s/%s]\n温度:%s~%s°C-%s\n污染指数:%s-%s\n穿衣建议:%s'%(city,status2,status1,temperature2,temperature1,zwx_s,pollution,pollution_l,chy_shuoming)
+			content=u'%-明天天气情况\n[%s/%s]\n温度:%s~%s°C-%s\n污染指数:%s-%s\n穿衣建议:%s'%(city,status2,status1,temperature2,temperature1,zwx_s,pollution,pollution_l,chy_shuoming)
 			return self.render.reply_text(self.fromUser,self.toUser,int(time.time()),content)
 		else:
 			content='尼玛，这是什么地方啊，我都查不到这旮旯的天气~'
 			return self.render.reply_text(self.fromUser,self.toUser,int(time.time()),content)
 	
+	def onBonus(self):
+		list=[u"你以为本大人会推送这些么？",u"家庭教师の亂ガヴァネス.avi",u"制服フェティシズム.avi",u"可爱いメイド爆乳.rmvb",u"呵呵~你还是图样图森破..."]
+		content='\n'.join(list)
+		return self.render.reply_text(self.fromUser,self.toUser,int(time.time()),content)
+
 	#银宫/10班通讯录功能
 	def onContact(self):
 		return
