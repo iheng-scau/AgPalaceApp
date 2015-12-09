@@ -149,7 +149,7 @@ class HandlerInterface:
 		url="虽然本大人的英语很好,应付你这水平的翻译,去问有道就够了:\nhttp://fanyi.youdao.com/"
 		return self.render.reply_text(self.fromUser,self.toUser,int(time.time()),url)
 	def onAutoReply(self):
-
+		return
 	def testDB(self):
 		test=MySqlDaoInterface()
 		test.testConn()
