@@ -125,7 +125,7 @@ class HandlerInterface:
 	def onAgitivity(self):
 		agitivity_dao=MySqlDaoInterface()
 		agitivity=agitivity_dao.getLastAgitivity()
-		content="[银宫活动公告牌]\n%s-活动时间:%s\n活动描述:%s\n备注:%s\n-----------------\n回复\'+1\'即可参加该活动哦~"%(agitivity.title,agitivity.date,agitivity.content,agitivity.note)
+		content=u"[银宫活动公告牌]\n%s-活动时间:%s\n活动描述:%s\n备注:%s\n-----------------\n回复\'+1\'即可参加该活动哦~"%(agitivity.title,agitivity.date,agitivity.content,agitivity.note)
 		return self.render.reply_text(self.fromUser,self.toUser,int(time.time()),content)
 
 	def onBonus(self):
