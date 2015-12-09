@@ -92,8 +92,6 @@ class HandlerInterface:
 		res=urllib2.urlopen(req)
 		data=res.read()
 
-		#data=str(data)
-
 		xml=etree.fromstring(data)
 		if xml.find("Weather")!=None:	
 			city=xml.find("Weather").find("city").text
@@ -102,7 +100,10 @@ class HandlerInterface:
 			temperature1=xml.find("Weather").find("temperature1").text
 			temperature2=xml.find("Weather").find("temperature2").text
 			pollution=xml.find("Weather").find("pollution").text
-			content=u'%s\n[%s/%s]\n温度:%s~%s°C\n污染指数:%s'%(city,status2,status1,temperature2,temperature1,pollution)
+			pollution_l=xml.find("Weather").find("pollution_l").text
+			zwx_s=xml.find("Weather").find("zwx_s").text
+			chy_shuoming=xml.find(""Weather).find("chy_shuoming").text
+			content=u'%s\n[%s/%s]\n温度:%s~%s°C-%s\n污染指数:%s-%s\n穿衣建议:%s'%(city,status2,status1,temperature2,temperature1,zwx_s,pollution,pollution_l,chy_shuoming)
 			return self.render.reply_text(self.fromUser,self.toUser,int(time.time()),content)
 		else:
 			content='尼玛，这是什么地方啊，我都查不到这旮旯的天气~'
