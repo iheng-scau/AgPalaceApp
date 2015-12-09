@@ -97,6 +97,7 @@ class HandlerInterface:
 
 		xml=etree.fromstring(data)
 		city=xml.find("Weather").find("city")
+		print(city)
 		status1=xml.find("status1").text
 		status2=xml.find("status2").text
 		temperature1=xml.find("temperature1").text
