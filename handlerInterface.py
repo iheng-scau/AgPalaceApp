@@ -60,7 +60,7 @@ class HandlerInterface:
 			key=content[0:length-2]
 			key=key.encode('gb2312')
 			return self.onWeather(key)
-		elif content=='翻译':
+		elif content.encode('utf-8')=='翻译':
 			return self.onTranslate(self)
 		#测试数据库，开发用
 		elif content=='testdb':
