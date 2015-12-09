@@ -123,8 +123,8 @@ class HandlerInterface:
 	def onContact(self):
 
 	def onAdultVideo(self):
-
-	def onTranslate(self,content):
+		
+	def onTranslate(self):
 		url="http://fanyi.youdao.com/"
 		return self.render.reply_text(self.fromUser,self.toUser,int(time.time()),url)
 	def testDB(self):
