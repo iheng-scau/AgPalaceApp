@@ -102,7 +102,7 @@ class HandlerInterface:
 			pollution=xml.find("Weather").find("pollution").text
 			pollution_l=xml.find("Weather").find("pollution_l").text
 			zwx_s=xml.find("Weather").find("zwx_s").text
-			chy_shuoming=xml.find(""Weather).find("chy_shuoming").text
+			chy_shuoming=xml.find("Weather").find("chy_shuoming").text
 			content=u'%s\n[%s/%s]\n温度:%s~%s°C-%s\n污染指数:%s-%s\n穿衣建议:%s'%(city,status2,status1,temperature2,temperature1,zwx_s,pollution,pollution_l,chy_shuoming)
 			return self.render.reply_text(self.fromUser,self.toUser,int(time.time()),content)
 		else:
