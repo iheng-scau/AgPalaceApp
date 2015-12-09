@@ -51,6 +51,7 @@ class HandlerInterface:
 		elif re.search(r'天气$',str(content.encode('utf-8')))!=None:
 			length=len(content)
 			key=content[0:length-2]
+			key=key.encode('utf-8')
 			return self.onWeather(key)
 		elif content=='testdb':
 			self.testDB()
