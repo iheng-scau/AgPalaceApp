@@ -102,8 +102,8 @@ class HandlerInterface:
 		temperature1=xml.find("Weather").find("temperature1").text
 		temperature2=xml.find("Weather").find("temperature2").text
 		pollution_s=xml.find("Weather").find("pollution_s").text
-
-		content=city+'\n'+'['+status1+'/'+status2+']\n'+'温度:'+temperature1+'~'+temperature2+'°C\n'+pollution_s
+		content=u'%s\n[%s/%s]\n温度:%s~%s°C\n%s'%(city,status1,status2,temperature1,temperature2,pollution_s)
+		#content=city+u'\n'+u'['+status1+u'/'+status2+u']\n'+u'温度:'+temperature1+u'~'+temperature2+u'°C\n'+pollution_s
 		return self.render.reply_text(self.fromUser,self.toUser,int(time.time()),content)
 
 
