@@ -92,7 +92,7 @@ class HandlerInterface:
 		req=urllib2.Request(url)
 		res=urllib2.urlopen(req)
 		data=res.read()
-		xml=etree.fromstring(data.decode('utf-8'))
+		xml=etree.fromstring(data)
 		city=xml.find('city').text
 		status1=xml.find('status1').text
 		status2=xml.find('status2').text
