@@ -50,6 +50,9 @@ class HandlerInterface:
 			return self.onMusic()
 		elif re.search(r'天气$',str(content.encode('utf-8')))!=None:
 			length=len(content)
+			if(length==2):
+				content="不加上城市名，你想我查哪个旮旯的天气?!"
+				return self.render.reply_text(self.fromUser,self.toUser,int(time.time()),content)
 			key=content[0:length-2]
 			key=key.encode('gb2312')
 			return self.onWeather(key)
