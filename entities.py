@@ -34,7 +34,7 @@ class Music:
 	def setPicUrl(self,picurl):
 		self.picurl=picurl
 class Agitivity:
-	def __init__(self,title,content,participant,date,note):
+	def __init__(self,title,content,date,participant,note):
 		self.title=title
 		self.content=content
 		self.participant=participant
