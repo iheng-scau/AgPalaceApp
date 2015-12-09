@@ -125,7 +125,7 @@ class HandlerInterface:
 	def onAdultVideo(self):
 		return
 	def onTranslate(self):
-		url="http://fanyi.youdao.com/"
+		url="虽然本大人的英语很好,应付你这水平的翻译,去问有道就够了:\nhttp://fanyi.youdao.com/"
 		return self.render.reply_text(self.fromUser,self.toUser,int(time.time()),url)
 	def testDB(self):
 		test=MySqlDaoInterface()
