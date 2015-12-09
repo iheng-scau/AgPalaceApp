@@ -4,6 +4,7 @@ import lxml
 import time
 import os
 import logging
+import urllib
 import urllib2,json
 import re
 from lxml import etree
@@ -46,7 +47,6 @@ class HandlerInterface:
 		elif content=='4':
 			return self.onGossip()
 		elif content=='music':
-			#test_content="<xml>+/<ToUserName><![CDATA["+self.fromUser+"]]></ToUserName><FromUserName><![CDATA["+self.toUser+"]]></FromUserName><CreateTime>1449569225</CreateTime><MsgType><![CDATA[music]]></MsgType><Music><Title><![CDATA[title]]></Title><Description><![CDATA[description]]></Description><MusicUrl><![CDATA[music_url]]></MusicUrl><HQMusicUrl><![CDATA[HQ_MUSIC_Url]]></HQMusicUrl><ThumbMediaId><![CDATA[media_id]]></ThumbMediaId></Music></xml>"
 			return self.onMusic()
 		elif re.search(r'天气$',str(content.encode('utf-8')))!=None:
 			length=len(content)
@@ -78,7 +78,7 @@ class HandlerInterface:
 	def onMusic(self):
 		music_dao=MySqlDaoInterface()
 		music=music_dao.getRandomMusic()
-		#微信接口的模板是错的
+		#微信接口的模板是错的,而且需要使用带.mp3后缀的资源，使用起来不方便，暂时不用，改用图文推荐形式
 		#print(self.render.reply_music(self.fromUser,self.toUser,int(time.time()),music.title,music.description,music.url))
 		#return self.render.reply_music(self.fromUser,self.toUser,int(time.time()),music.title,music.description,music.url)
 		return self.render.reply_pic_text(self.fromUser,self.toUser,int(time.time()),music.title,music.description,music.picurl,music.url)
