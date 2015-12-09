@@ -97,12 +97,11 @@ class HandlerInterface:
 
 		xml=etree.fromstring(data)
 		city=xml.find("Weather").find("city").text
-		print(city)
-		status1=xml.find("status1").text
-		status2=xml.find("status2").text
-		temperature1=xml.find("temperature1").text
-		temperature2=xml.find("temperature2").text
-		pollution_s=xml.find("pollution_s").text
+		status1=xml.find("Weather").find("status1").text
+		status2=xml.find("Weather").find("status2").text
+		temperature1=xml.find("Weather").find("temperature1").text
+		temperature2=xml.find("Weather").find("temperature2").text
+		pollution_s=xml.find("Weather").find("pollution_s").text
 
 		content=city+'\n'+'['+status1+'/'+status2+']\n'+'温度:'+temperature1+'~'+temperature2+'°C\n'+pollution_s
 		return self.render.reply_text(self.fromUser,self.toUser,int(time.time()),content)
