@@ -84,8 +84,8 @@ class HandlerInterface:
 		return self.render.reply_pic_text(self.fromUser,self.toUser,int(time.time()),music.title,music.description,music.picurl,music.url)
 
 	def onWeather(self,key):
-		key=urllib.urlencode(key)
-		url='http://php.weather.sina.com.cn/xml.php?city='+key+'&password=DJOYnieT8234jlsK&day=0'
+		params={'city':key,'password':'DJOYnieT8234jlsK','day':0}
+		url='http://php.weather.sina.com.cn/xml.php?'+urllib.urlencode(params)
 		print(url)
 		req=urllib2.Request(url)
 		res=urllib2.urlopen(req)
