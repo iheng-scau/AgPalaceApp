@@ -48,13 +48,19 @@ class HandlerInterface:
 			return self.onAgPalace()
 		elif content=='2':
 			return self.onAger()
+		elif content=='3':
+			return self.onAgadamic()
 		#获取最新的八卦
 		elif content=='4':
 			return self.onGossip()
+		elif content=='5':
+			return self.onTennessee()
 		elif content=='6':
 			return self.onAgitivity()
 		elif content=='7':
 			return self.onBonus()
+		elif content=='8':
+			return self.onAbout()
 		#获取音乐推荐
 		elif content=='music':
 			return self.onMusic()
@@ -72,7 +78,7 @@ class HandlerInterface:
 		#测试数据库，开发用
 		elif content=='testdb':
 			self.testDB()
-		return self.render.reply_text(self.fromUser,self.toUser,int(time.time()),content)
+		onAgadamic()
 
 	#获取银宫信息
 	def onAgPalace(self):
@@ -88,6 +94,14 @@ class HandlerInterface:
 		ager=ager_dao.getAgerInfo()
 		return self.render.reply_pic_text(self.fromUser,self.toUser,int(time.time()),ager.name,ager.description,ager.img_url,'')
 
+	def onTennessee(self):
+		content=u'田纳西Women Co.unLtd的相关的Play功能和田纳西湿词库还在建设中,敬请期待...'
+		return self.render.reply_text(self.fromUser,self.toUser,int(time.time()),content)
+
+	def onAgadamic(self):
+		content=u'银学这么勃大茎深的学术，仅限内部交流，暂不开放'
+		return self.render.reply_text(self.fromUser,self.toUser,int(time.time()),content)
+
 	def onGossip(self):
 		gossip_dao=MySqlDaoInterface()
 		list=gossip_dao.getGossip()
@@ -96,6 +110,11 @@ class HandlerInterface:
 		for gossip in list:
 			content=content+"["+str(gossip.time)+u"__"+gossip.title+u"]\n"+gossip.content+u"\n"
 		return self.render.reply_text(self.fromUser,self.toUser,int(time.time()),content)
+
+	def onAbout(self):
+		content=u'银宫公众平台是基于Python开发的微信公众平台并且已经在Github上面作为开源项目,现部署在新浪云(SAE),存储使用MySQL和Memcache结合的方式.\n'+\
+		u'开发者:iheng\n平台版本:0.1\nPython版本:2.7.x\n上线时间:2015-12-03\nGithub:点击详情可进入项目Github主页'
+		return self.render.reply_pic_text(self.fromUser,self.toUser,int(time.time()),'关于银宫公众平台/开发者',content,'','')
 
 	def onMusic(self):
 		music_dao=MySqlDaoInterface()
