@@ -113,7 +113,7 @@ class HandlerInterface:
 
 	def onAbout(self):
 		content=u'银宫公众平台是基于Python开发的微信公众平台并且已经在Github上面作为开源项目,现部署在新浪云(SAE),存储使用MySQL和Memcache结合的方式.\n'+\
-		u'-----------------\n项目信息:\n开发者: iheng-scau\n平台版本: 0.1\nPython: 2.7.x\n上线时间: 2015-12-03\nGithub主页: https://github.com/iheng-scau/AgPalaceApp(点击详情可进入项目Github主页)'
+		u'-----------------\n项目信息:\n开发者: iheng-scau\n平台版本: 0.1\nPython: 2.7.x\n上线时间: 2015-12-03\nGithub主页: https://github.com/iheng-scau/AgPalaceApp(点击详情访问)'
 		return self.render.reply_pic_text(self.fromUser,self.toUser,int(time.time()),'关于银宫公众平台/开发者',content,'','')
 
 	def onMusic(self):
@@ -155,7 +155,7 @@ class HandlerInterface:
 		return self.render.reply_text(self.fromUser,self.toUser,int(time.time()),content)
 
 	def onBonus(self):
-		list=[u"你以为本大人会推送这些么？",u"-家庭教师の亂ガヴァネス.avi",u"-制服フェティシズム.avi",u"-可爱いメイド爆乳.rmvb",u"呵呵~你还是图样图森破...不给你推送地道战,红星照我去战斗就不错了~"]
+		list=[u"你以为本大人会推送这些么？",u"-家庭教师の亂ガヴァネス.avi",u"-制服フェティシズム.avi",u"-可爱いメイド爆乳.rmvb",u"呵呵~图样图森破...不给你推送地道战，红星照我去战斗就不错了~"]
 		content='\n'.join(list)
 		return self.render.reply_text(self.fromUser,self.toUser,int(time.time()),content)
 
