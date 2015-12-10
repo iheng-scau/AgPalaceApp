@@ -85,7 +85,7 @@ class HandlerInterface:
 		logging.error(u'in')
 		title='银宫 | Ag-Palace'
 		description='Home Page of Ag-Palace'
-		picurl='http://agpalaceapp.sinaapp.com/static/img/err.png'
+		picurl='http://agpalaceapp.sinaapp.com/static/img/agp-clogo.jpg'
 		url='http://agpalaceapp.sinaapp.com/static/index.html'
 		logging.error(self.render.reply_pic_text(self.fromUser,self.toUser,int(time.time()),title,description,picurl,url))
 		return self.render.reply_pic_text(self.fromUser,self.toUser,int(time.time()),title,description,picurl,url)
