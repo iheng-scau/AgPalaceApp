@@ -89,19 +89,24 @@ class HandlerInterface:
 		url='http://agpalaceapp.sinaapp.com/static/index.html'
 		logging.error(self.render.reply_pic_text(self.fromUser,self.toUser,int(time.time()),title,description,picurl,url))
 		return self.render.reply_pic_text(self.fromUser,self.toUser,int(time.time()),title,description,picurl,url)
+	
+	#获取银民
 	def onAger(self):
 		ager_dao=MySqlDaoInterface()
 		ager=ager_dao.getAgerInfo()
 		return self.render.reply_pic_text(self.fromUser,self.toUser,int(time.time()),ager.name,ager.description,ager.img_url,'')
 
+	#田纳西
 	def onTennessee(self):
 		content=u'田纳西Women Co.unLtd的相关的Play功能和田纳西湿词库还在建设中,敬请期待...'
 		return self.render.reply_text(self.fromUser,self.toUser,int(time.time()),content)
 
+	#银学
 	def onAgadamic(self):
 		content=u'银学这么勃大茎深的学术，仅限内部交流，暂不开放'
 		return self.render.reply_text(self.fromUser,self.toUser,int(time.time()),content)
 
+	#获取八卦
 	def onGossip(self):
 		gossip_dao=MySqlDaoInterface()
 		list=gossip_dao.getGossip()
@@ -111,11 +116,13 @@ class HandlerInterface:
 			content=content+"["+str(gossip.time)+u"__"+gossip.title+u"]\n"+gossip.content+u"\n"
 		return self.render.reply_text(self.fromUser,self.toUser,int(time.time()),content)
 
+	#关于
 	def onAbout(self):
 		content=u'银宫公众平台是基于Python开发的微信公众平台并且已经在Github上面作为开源项目,现部署在新浪云(SAE),存储使用MySQL和Memcache结合的方式.\n'+\
 		u'-----------------\n项目信息:\n开发者: iheng-scau\n平台版本: 0.1\nPython: 2.7.x\n上线时间: 2015-12-03\nGithub主页: https://github.com/iheng-scau/AgPalaceApp(点击详情访问)'
 		return self.render.reply_pic_text(self.fromUser,self.toUser,int(time.time()),'关于银宫公众平台/开发者',content,'','')
 
+	#音乐推荐功能
 	def onMusic(self):
 		music_dao=MySqlDaoInterface()
 		music=music_dao.getRandomMusic()
@@ -124,6 +131,7 @@ class HandlerInterface:
 		#return self.render.reply_music(self.fromUser,self.toUser,int(time.time()),music.title,music.description,music.url)
 		return self.render.reply_pic_text(self.fromUser,self.toUser,int(time.time()),music.title,music.description,music.picurl,music.url)
 
+	#天气查询功能
 	def onWeather(self,key):
 		key=urllib.quote(key)
 
@@ -148,12 +156,14 @@ class HandlerInterface:
 		else:
 			content='尼玛，这是什么地方啊，我都查不到这旮旯的天气~'
 			return self.render.reply_text(self.fromUser,self.toUser,int(time.time()),content)
+
+	#获取银宫活动
 	def onAgitivity(self):
 		agitivity_dao=MySqlDaoInterface()
 		agitivity=agitivity_dao.getLastAgitivity()
 		content=u"[银宫活动公告牌]\n%s-活动时间:%s\n活动描述:%s\n备注:%s\n-----------------\n回复 +1 即可参加该活动哦~"%(agitivity.title,agitivity.date,agitivity.content,agitivity.note)
 		return self.render.reply_text(self.fromUser,self.toUser,int(time.time()),content)
-
+	#福利推送
 	def onBonus(self):
 		list=[u"你以为本大人会推送这些么？",u"-家庭教师の亂ガヴァネス.avi",u"-制服フェティシズム.avi",u"-可爱いメイド爆乳.rmvb",u"呵呵~图样图森破...不给你推送地道战，红星照我去战斗就不错了~",u"PS:资源推送为限定功能，只有通过申请才使用本功能。"]
 		content='\n'.join(list)
@@ -162,13 +172,17 @@ class HandlerInterface:
 	#银宫/10班通讯录功能
 	def onContact(self):
 		return
+	#推荐小电影功能
 	def onAdultVideo(self):
 		return
+	#翻译功能
 	def onTranslate(self):
 		url="虽然本大人的英语很好,应付你这水平的翻译,去问有道就够了:\nhttp://fanyi.youdao.com/"
 		return self.render.reply_text(self.fromUser,self.toUser,int(time.time()),url)
+	#如果发送的文本不在功能列表中，则使用自动回复功能
 	def onAutoReply(self):
 		return
+	#测试数据库
 	def testDB(self):
 		test=MySqlDaoInterface()
 		test.testConn()

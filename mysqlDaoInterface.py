@@ -17,6 +17,7 @@ MYSQL_HOST=sae.const.MYSQL_HOST
 MYSQL_PORT=sae.const.MYSQL_PORT
 MYSQL_HOST_S=sae.const.MYSQL_HOST_S
 
+#针对mysql的dao
 class MySqlDaoInterface:
 
 	def  __init__(self):

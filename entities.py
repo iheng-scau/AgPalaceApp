@@ -1,6 +1,7 @@
 import os
 import sys
 
+#实体类
 class Gossip:
 	def __init__(self,title,content,time):
 		self.title=title
