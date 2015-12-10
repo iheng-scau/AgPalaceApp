@@ -84,7 +84,7 @@ class HandlerInterface:
 	def onAgPalace(self):
 		logging.error(u'in')
 		title='银宫 | Ag-Palace'
-		description='Home Page of Ag-Palace'
+		description='银宫主页 | 银宫是由银皇立班一世所创立，并有多位资深银民组成的银性组织，旨在进行银学研究与交流以及论理性与感性的高雅学术活动。并且我们从不生产八卦，我们只是八卦的搬运工。\n(c)2008-2015,Ag-Palace'
 		picurl='http://agpalaceapp.sinaapp.com/static/img/agp-clogo.jpg'
 		url='http://agpalaceapp.sinaapp.com/static/index.html'
 		logging.error(self.render.reply_pic_text(self.fromUser,self.toUser,int(time.time()),title,description,picurl,url))
