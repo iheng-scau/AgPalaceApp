@@ -75,6 +75,18 @@ class HandlerInterface:
 			return self.onWeather(key)
 		elif content.encode('utf-8')=='翻译':
 			return self.onTranslate()
+		#获取使用说明
+		elif content=='i':
+			title=u'银宫微信公众号使用说明'
+			content=u'除了主菜单列出的功能之外，本公众号还不定时新增一些辅助的小功能供各位银民使用，\
+			并且已有的小功能和新功能都在进行不定期的更新和上线。\n'+\
+			u'[music]，音乐推荐功能，由于微信音乐消息存在bug，暂时使用图文消息进行推荐。\n'+\
+			u'[天气]，输入城市+天气可以查询城市明天的天气，如 广州天气\n'+\
+			u'[翻译]，翻译现在已经下线，但是保留功能识别，系统会默认推荐有道\n'+\
+			u'[隐藏功能]，发送某些关键字可发现隐藏的功能，在此不具体列出\n'+\
+			u'*暂时开放的功能可能存在缺陷或者不响应(SAE有可能发生延迟)，如果您对小功能有什么想法，欢迎联系我们:iheng_scau@hotmail.com'
+			return self.render.reply_pic_text(self.fromUser,self.toUser,int(time.time()),title,content,'','')
+			
 		#测试数据库，开发用
 		elif content=='testdb':
 			self.testDB()
@@ -163,6 +175,7 @@ class HandlerInterface:
 		agitivity=agitivity_dao.getLastAgitivity()
 		content=u"[银宫活动公告牌]\n%s-活动时间:%s\n活动描述:%s\n备注:%s\n-----------------\n回复 +1 即可参加该活动哦~"%(agitivity.title,agitivity.date,agitivity.content,agitivity.note)
 		return self.render.reply_text(self.fromUser,self.toUser,int(time.time()),content)
+
 	#福利推送
 	def onBonus(self):
 		list=[u"-家庭教师の亂ガヴァネス.avi",u"-制服フェティシズム.avi",u"-可爱いメイド爆乳.rmvb",u"PS:资源推送为限定功能，只有通过申请才使用本功能。"]
