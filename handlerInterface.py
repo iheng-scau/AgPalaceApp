@@ -166,9 +166,10 @@ class HandlerInterface:
 	#福利推送
 	def onBonus(self):
 		list=[u"-家庭教师の亂ガヴァネス.avi",u"-制服フェティシズム.avi",u"-可爱いメイド爆乳.rmvb",u"PS:资源推送为限定功能，只有通过申请才使用本功能。"]
+		title=u'番号/百度云/磁力链接/torrent'
 		content='\n'.join(list)
 		picurl=u'http://agpalaceapp.sinaapp.com/static/img/fbiwarning.png'
-		return self.render.reply_pic_text(self.fromUser,self.toUser,int(time.time()),music.title,content,picurl,'')
+		return self.render.reply_pic_text(self.fromUser,self.toUser,int(time.time()),title,content,picurl,'')
 
 	#银宫/10班通讯录功能
 	def onContact(self):
