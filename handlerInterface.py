@@ -169,7 +169,7 @@ class HandlerInterface:
 		title=u'番号/百度云/磁力链接/torrent'
 		content='\n'.join(list)
 		picurl=u'http://agpalaceapp.sinaapp.com/static/img/fbiwarning.png'
-		return self.render.reply_pic_text(self.fromUser,self.toUser,int(time.time()),title,content,picurl,'')
+		return self.render.reply_pic_text(self.fromUser,self.toUser,int(time.time()),title,content,picurl,u'http://www.shdf.gov.cn/')
 
 	#银宫/10班通讯录功能
 	def onContact(self):
