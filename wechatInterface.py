@@ -52,6 +52,7 @@ class WechatInterface:
             #处理时间消息入口
             elif msgType == 'event':
                 result=handler.onSubsribeMsg()
+            #如果不是普通文本或时间消息
             else:
                 return self.render.reply_text(fromUser,toUser,int(time.time()),u"hello"+content)
             return result

@@ -165,9 +165,10 @@ class HandlerInterface:
 		return self.render.reply_text(self.fromUser,self.toUser,int(time.time()),content)
 	#福利推送
 	def onBonus(self):
-		list=[u"你以为本大人会推送这些么？",u"-家庭教师の亂ガヴァネス.avi",u"-制服フェティシズム.avi",u"-可爱いメイド爆乳.rmvb",u"呵呵~图样图森破...不给你推送地道战，红星照我去战斗就不错了~",u"PS:资源推送为限定功能，只有通过申请才使用本功能。"]
+		list=[u"-家庭教师の亂ガヴァネス.avi",u"-制服フェティシズム.avi",u"-可爱いメイド爆乳.rmvb",u"PS:资源推送为限定功能，只有通过申请才使用本功能。"]
 		content='\n'.join(list)
-		return self.render.reply_text(self.fromUser,self.toUser,int(time.time()),content)
+		picurl=u'http://agpalaceapp.sinaapp.com/static/img/fbiwarning.png'
+		return self.render.reply_pic_text(self.fromUser,self.toUser,int(time.time()),music.title,content,picurl,'')
 
 	#银宫/10班通讯录功能
 	def onContact(self):
