@@ -83,8 +83,10 @@ class HandlerInterface:
 			key_array=content.split("\\")
 			t_train_code=key_array[1]
 			date=key_array[2]
+			city=key_array[3]
+			mode=key_array[4]
 			print t_train_code+date
-			result_str=self.onTrainInfo(t_train_code,date)
+			result_str=self.onTrainInfo(t_train_code,date,city,mode)
 			return self.render.reply_text(self.fromUser,self.toUser,int(time.time()),result_str)
 		#翻译功能(Deprecated)
 		elif content.encode('utf-8')=='翻译':
@@ -97,6 +99,7 @@ class HandlerInterface:
 			u'[music]，发送 music 获取音乐推荐，由于微信音乐消息存在bug，暂时使用图文消息进行推荐。\n'+\
 			u'[天气]，输入城市+天气可以查询城市明天的天气，如 广州天气\n'+\
 			u'[翻译]，翻译现在已经下线，但是保留功能识别，系统会默认推荐有道\n'+\
+			u'[火车信息]，输入格式 火车/车次/时间/出发地 可查询对应日期的车次信息(受12306网站的稳定性影响)'+\
 			u'[隐藏功能]，发送某些关键字可发现隐藏的功能，在此不具体列出\n'+\
 			u'*暂时开放的功能可能存在缺陷或者不响应(SAE有可能发生延迟)，如果您对小功能有什么想法，欢迎联系我们:iheng_scau@hotmail.com'
 			return self.render.reply_pic_text(self.fromUser,self.toUser,int(time.time()),title,content,'','')
@@ -191,7 +194,7 @@ class HandlerInterface:
 
 	#福利推送
 	def onBonus(self):
-		list=[u"-家庭教师の亂ガヴァネス.avi",u"-制服フェティシズム.avi",u"-可爱いメイド爆乳.rmvb",u"PS:资源推送为限定功能，只有通过申请才使用本功能。"]
+		list=[u"-家庭教师の亂ガヴァネス.avi",u"-制服フェティシズム.avi",u"-可爱いメイド爆乳.rmvb",u"PS:资源推送为限定功能，只有通过申请才使用本功能。赶紧点开链接吧~"]
 		title=u'番号/百度云/磁力链接/torrent'
 		content='\n'.join(list)
 		picurl=u'http://agpalaceapp.sinaapp.com/static/img/fbiwarning.png'
@@ -211,8 +214,16 @@ class HandlerInterface:
 	def onAutoReply(self):
 		return
 	#火车信息查询
-	def onTrainInfo(self,t_train_code,date):
-		url=str(self.render.train_site_url(date))
+	def onTrainInfo(self,t_train_code,date,city,mode):
+		train_code_dict={'广州':'GZQ','上海':'SHH','韶关':'SNQ','深圳':'SZQ','太原':'TYV'}
+		if mode=='R':
+			from_station=train_code_dict.get(city)
+			to_station=train_code_dict.get('韶关')
+		else:
+			from_station=train_code_dict.get('韶关')
+			to_station=train_code_dict.get(city)
+
+		url=str(self.render.train_site_url(date,from_station,to_station))
 		print url
 		req=urllib2.Request(url)
 		res=urllib2.urlopen(req)
