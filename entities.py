@@ -46,3 +46,16 @@ class Ager:
 		self.description=description
 		self.img_url=img_url
 		self.wechat=wechat
+class TrainInfo:
+	#attrs
+	train_code=''
+	start_station=''
+	end_station=''
+	from_station=''
+	to__station=''
+	start_time=''
+	arrive_time=''
+	duration=''
+	available=''
+
+

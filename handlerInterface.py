@@ -1,6 +1,5 @@
 # coding: utf-8
 import web
-import lxml
 import time
 import os
 import logging
@@ -219,10 +218,9 @@ class HandlerInterface:
 		json_data=res.read()
 		print len(json_data)
 		data=json.loads(json_data)
-		result={}
+		result=TrainInfo()
 		for index in range(len(data['data'])):
 			train_code=data['data'][index]['queryLeftNewDTO']['station_train_code']
-			print train_code
 			if train_code==t_train_code:
 				result.train_code=data['data'][index]['queryLeftNewDTO']['station_train_code']
 				result.start_station=data['data'][index]['queryLeftNewDTO']['start_station_name']
