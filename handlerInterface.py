@@ -83,6 +83,7 @@ class HandlerInterface:
 			key_array=content.split("\\")
 			t_train_code=key_array[1]
 			date=key_array[2]
+			print t_train_code+date
 			result_str=self.onTrainInfo(t_train_code,date)
 			return self.render.reply_text(self.fromUser,self.toUser,int(time.time()),content)
 		#翻译功能(Deprecated)
