@@ -58,6 +58,8 @@ class TrainInfo:
 	arrive_time=''
 	duration=''
 	available=''
+	#商务座
+	sw_num='0'
 	#特等座
 	sc_num='0'
 	#一等座
