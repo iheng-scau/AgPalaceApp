@@ -85,7 +85,7 @@ class HandlerInterface:
 			date=key_array[2]
 			print t_train_code+date
 			result_str=self.onTrainInfo(t_train_code,date)
-			return self.render.reply_text(self.fromUser,self.toUser,int(time.time()),content)
+			return self.render.reply_text(self.fromUser,self.toUser,int(time.time()),result_str)
 		#翻译功能(Deprecated)
 		elif content.encode('utf-8')=='翻译':
 			return self.onTranslate()
