@@ -84,6 +84,7 @@ class HandlerInterface:
 			t_train_code=key_array[1]
 			date=key_array[2]
 			city=key_array[3]
+			print city+'k'
 			mode=key_array[4]
 			print t_train_code+date
 			result_str=self.onTrainInfo(t_train_code,date,city,mode)
@@ -215,7 +216,7 @@ class HandlerInterface:
 		return
 	#火车信息查询
 	def onTrainInfo(self,t_train_code,date,city,mode):
-		train_code_dict={'广州':'GZQ','上海':'SHH','韶关':'SNQ','深圳':'SZQ','太原':'TYV'}
+		train_code_dict={'广州':'GZQ',u'上海':'SHH','韶关':'SNQ','深圳':'SZQ','太原':'TYV'}
 		if mode=='R':
 			from_station=train_code_dict.get(city)
 			to_station=train_code_dict.get('韶关')
