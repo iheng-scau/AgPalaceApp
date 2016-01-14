@@ -217,6 +217,7 @@ class HandlerInterface:
 		req=urllib2.Request(url)
 		res=urllib2.urlopen(req)
 		json_data=res.read()
+		print len(json_data)
 		data=json.loads(json_data)
 		result={}
 		for index in range(len(data['data'])):
