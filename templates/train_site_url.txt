@@ -1,2 +1,2 @@
-def with(date)
+$def with(date)
 https://kyfw.12306.cn/otn/leftTicket/queryT?leftTicketDTO.train_date=$date&leftTicketDTO.from_station=SNQ&leftTicketDTO.to_station=GZQ&purpose_codes=ADULT
