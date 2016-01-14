@@ -10,6 +10,7 @@ from lxml import etree
 #from authInterface import AuthInterface
 #from mcDaoInterface import McDaoInterface
 from mysqlDaoInterface import MySqlDaoInterface
+from entities import TrainInfo
 
 class HandlerInterface:
 
