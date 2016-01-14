@@ -100,7 +100,7 @@ class HandlerInterface:
 			u'[music]，发送 music 获取音乐推荐，由于微信音乐消息存在bug，暂时使用图文消息进行推荐。\n'+\
 			u'[天气]，输入城市+天气可以查询城市明天的天气，如 广州天气\n'+\
 			u'[翻译]，翻译现在已经下线，但是保留功能识别，系统会默认推荐有道\n'+\
-			u'[火车信息]，输入格式 火车/车次/时间/城市/往返 如发送 火车/G1002/2016-02-14/深圳/L 可查询G1002次列车的开往韶关的信息,最后一个字母R表示去往韶关，L表示离开韶关'+'\n'+\
+			u'[火车信息]，输入格式 火车/车次/时间/城市/往返 如发送 火车/G1002/2016-02-14/深圳/L 可查询G1002次列车的开往韶关的信息,最后一个字母R表示去往韶关，L表示离开韶关(12306网站不稳定可能导致查询失败)'+'\n'+\
 			u'[隐藏功能]，发送某些关键字可发现隐藏的功能，在此不具体列出\n'+\
 			u'*暂时开放的功能可能存在缺陷或者不响应(SAE有可能发生延迟)，如果您对小功能有什么想法，欢迎联系我们:iheng_scau@hotmail.com'
 			return self.render.reply_pic_text(self.fromUser,self.toUser,int(time.time()),title,content,'','')
@@ -147,8 +147,8 @@ class HandlerInterface:
 
 	#关于
 	def onAbout(self):
-		content=u'银宫公众平台是基于Python开发的微信公众平台并且已经在Github上面作为开源项目,现部署在新浪云(SAE),存储使用MySQL和Memcache结合的方式.\n'+\
-		u'-----------------\n项目信息:\n开发者: iheng-scau\n平台版本: 0.1\nPython: 2.7.x\n上线时间: 2015-12-03\nGithub主页: https://github.com/iheng-scau/AgPalaceApp(点击详情访问)'
+		content=u'银宫公众平台是基于Python开发的微信公众平台并且已经在Github上面作为开源项目,现部署在新浪云(SAE),存储使用MySQL和Memcache(log:2016-01-13已禁用memcache服务)的方式.\n'+\
+		u'-----------------\n项目信息:\n开发者: iheng-scau\n平台版本: 0.1\nPython: 2.7.x\n上线时间: 2015-12-03\n最近更新时间:2016-01-14\nGithub主页: https://github.com/iheng-scau/AgPalaceApp(点击详情访问)'
 		return self.render.reply_pic_text(self.fromUser,self.toUser,int(time.time()),'关于银宫公众平台/开发者',content,'','')
 
 	#音乐推荐功能
