@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ef5a1a82-e92b-4344-bc7e-c88ee3fec6b6" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/train_site_url.txt" afterPath="$PROJECT_DIR$/templates/train_site_url.txt" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/handlerInterface.py" afterPath="$PROJECT_DIR$/handlerInterface.py" />
     </list>
     <ignored path="agpalaceapp.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -26,8 +26,8 @@
       <file leaf-file-name="handlerInterface.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/handlerInterface.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-0.24553572">
-              <caret line="156" column="26" selection-start-line="156" selection-start-column="20" selection-end-line="156" selection-end-column="26" />
+            <state vertical-scroll-proportion="0.5089286">
+              <caret line="217" column="27" selection-start-line="217" selection-start-column="27" selection-end-line="217" selection-end-column="27" />
               <folding />
             </state>
           </provider>
@@ -53,14 +53,14 @@
         <option value="$PROJECT_DIR$/trainInfoSpider.py" />
         <option value="$PROJECT_DIR$/templates/train_site_url.xml" />
         <option value="$PROJECT_DIR$/entities.py" />
-        <option value="$PROJECT_DIR$/handlerInterface.py" />
         <option value="$PROJECT_DIR$/templates/train_site_url.txt" />
+        <option value="$PROJECT_DIR$/handlerInterface.py" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="69" />
-    <option name="y" value="20" />
+    <option name="x" value="-3" />
+    <option name="y" value="17" />
     <option name="width" value="1115" />
     <option name="height" value="869" />
   </component>
@@ -270,7 +270,7 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="69" y="20" width="1115" height="869" extended-state="0" />
+    <frame x="-3" y="17" width="1115" height="869" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.19836214" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
@@ -352,8 +352,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/handlerInterface.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-0.24553572">
-          <caret line="156" column="26" selection-start-line="156" selection-start-column="20" selection-end-line="156" selection-end-column="26" />
+        <state vertical-scroll-proportion="0.5089286">
+          <caret line="217" column="27" selection-start-line="217" selection-start-column="27" selection-end-line="217" selection-end-column="27" />
           <folding />
         </state>
       </provider>

@@ -212,7 +212,7 @@ class HandlerInterface:
 		return
 	#火车信息查询
 	def onTrainInfo(self,t_train_code,date):
-		url=self.render.train_site_url(date)
+		url=str(self.render.train_site_url(date))
 		print url
 		req=urllib2.Request(url)
 		res=urllib2.urlopen(req)
