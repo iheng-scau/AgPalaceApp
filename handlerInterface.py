@@ -26,7 +26,7 @@ class HandlerInterface:
 		u"[1].银宫|Ag-Palace\n[2].银民|Ager\n[3].银学|Agadamic\n"+\
 		u"[4].八卦|Gossip\n[5].田纳西|Tennessee Co.unLtd\n"+\
 		u"[6].活动|Agitivity\n[7].你懂的|Oh,shit!\n[8].关于/开发者|About/Developer\n"+\
-		u"[i].使用说明|Instructions\n"+\
+		u"[i].更多的指令说明请回复 i 查看使用说明|Instructions\n"+\
 		u"*回复相应的数字获取相关信息.所有包含的功能未全部列出,隐藏功能等你发现,你懂的~\n"+\
 		u"*回复0可再次获得本消息.\n"+\
 		u"*Ag-Palace平台的功能还在不断完善中，如有意见或建议可联系我们:)"
@@ -100,7 +100,7 @@ class HandlerInterface:
 			u'[music]，发送 music 获取音乐推荐，由于微信音乐消息存在bug，暂时使用图文消息进行推荐。\n'+\
 			u'[天气]，输入城市+天气可以查询城市明天的天气，如 广州天气\n'+\
 			u'[翻译]，翻译现在已经下线，但是保留功能识别，系统会默认推荐有道\n'+\
-			u'[火车信息]，输入格式 火车/车次/时间/城市/往返 如发送 火车/G1002/2016-02-14/深圳/L 可查询G1002次列车的开往韶关的信息,最后一个字母R表示去往韶关，L表示离开韶关'+\
+			u'[火车信息]，输入格式 火车/车次/时间/城市/往返 如发送 火车/G1002/2016-02-14/深圳/L 可查询G1002次列车的开往韶关的信息,最后一个字母R表示去往韶关，L表示离开韶关'+'\n'+\
 			u'[隐藏功能]，发送某些关键字可发现隐藏的功能，在此不具体列出\n'+\
 			u'*暂时开放的功能可能存在缺陷或者不响应(SAE有可能发生延迟)，如果您对小功能有什么想法，欢迎联系我们:iheng_scau@hotmail.com'
 			return self.render.reply_pic_text(self.fromUser,self.toUser,int(time.time()),title,content,'','')
