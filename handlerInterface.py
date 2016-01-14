@@ -21,7 +21,8 @@ class HandlerInterface:
 		self.data=data
 		self.fromUser=data.find("FromUserName").text
 		self.toUser=data.find("ToUserName").text
-		self.default_content=u"欢迎关注银宫微信公众账号,输入相应关键字可以获取信息:\n"+\
+		self.default_content=\
+		u"欢迎关注银宫微信公众账号,输入相应关键字可以获取信息:\n"+\
 		u"[1].银宫|Ag-Palace\n[2].银民|Ager\n[3].银学|Agadamic\n"+\
 		u"[4].八卦|Gossip\n[5].田纳西|Tennessee Co.unLtd\n"+\
 		u"[6].活动|Agitivity\n[7].你懂的|Oh,shit!\n[8].关于/开发者|About/Developer\n"+\
@@ -39,7 +40,6 @@ class HandlerInterface:
 		xml=self.data
 
 		content=xml.find("Content").text
-		print(re.search(r'天气$',str(content.encode('utf-8')))!=None)
 		#获取欢迎消息
 		if content=='0':
 			return self.render.reply_text(self.fromUser,self.toUser,int(time.time()),self.default_content)
@@ -53,12 +53,16 @@ class HandlerInterface:
 		#获取最新的八卦
 		elif content=='4':
 			return self.onGossip()
+		#田纳西消息
 		elif content=='5':
 			return self.onTennessee()
+		#银宫活动
 		elif content=='6':
 			return self.onAgitivity()
+		#小福利推送
 		elif content=='7':
 			return self.onBonus()
+		#关于
 		elif content=='8':
 			return self.onAbout()
 		#获取音乐推荐
@@ -73,6 +77,15 @@ class HandlerInterface:
 			key=content[0:length-2]
 			key=key.encode('gb2312')
 			return self.onWeather(key)
+		#进行火车票查询
+		elif re.search(r'^火车',str(content.encode('utf-8')))!=None:
+			length=len(content)
+			key_array=content.split("\\")
+			t_train_code=key_array[1]
+			date=key_array[2]
+			result_str=self.onTrainInfo(t_train_code,date)
+			return self.render.reply_text(self.fromUser,self.toUser,int(time.time()),content)
+		#翻译功能(Deprecated)
 		elif content.encode('utf-8')=='翻译':
 			return self.onTranslate()
 		#获取使用说明
@@ -197,6 +210,33 @@ class HandlerInterface:
 	#如果发送的文本不在功能列表中，则使用自动回复功能
 	def onAutoReply(self):
 		return
+	#火车信息查询
+	def onTrainInfo(self,t_train_code,date):
+		url=self.render.train_site_url(date)
+		print url
+		req=urllib2.Request(url)
+		res=urllib2.urlopen(req)
+		json_data=res.read()
+		data=json.loads(json_data)
+		result={}
+		for index in range(len(data['data'])):
+			train_code=data['data'][index]['queryLeftNewDTO']['station_train_code']
+			if train_code==t_train_code:
+				result.train_code=data['data'][index]['queryLeftNewDTO']['station_train_code']
+				result.start_station=data['data'][index]['queryLeftNewDTO']['start_station_name']
+				result.end_station=data['data'][index]['queryLeftNewDTO']['end_station_name']
+				result.from_station=data['data'][index]['queryLeftNewDTO']['from_station_name']
+				result.to__station=data['data'][index]['queryLeftNewDTO']['to_station_name']
+				result.start_time=data['data'][index]['queryLeftNewDTO']['start_time']
+				result.arrive_time=data['data'][index]['queryLeftNewDTO']['arrive_time']
+				result.duration=data['data'][index]['queryLeftNewDTO']['lishiValue']
+				result.available=data['data'][index]['queryLeftNewDTO']['canWebBuy']
+
+		result_str=result.train_code+'\t'+result.start_station+'--'+result.end_station+'\n'+\
+			result.from_station+':'+result.start_time+'--'+result.arrive_time+':'+result.to__station+'('+result.duration+'min)'+'\n'+\
+			result.available
+		return result_str
+
 	#测试数据库
 	def testDB(self):
 		test=MySqlDaoInterface()
