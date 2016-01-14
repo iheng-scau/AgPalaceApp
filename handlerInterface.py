@@ -244,10 +244,19 @@ class HandlerInterface:
 				result.arrive_time=data['data'][index]['queryLeftNewDTO']['arrive_time']
 				result.duration=data['data'][index]['queryLeftNewDTO']['lishiValue']
 				result.available=data['data'][index]['queryLeftNewDTO']['canWebBuy']
+				result.sc_num=data['data'][index]['queryLeftNewDTO']['tz_num']
+				result.c1_num=data['data'][index]['queryLeftNewDTO']['zy_num']
+				result.c2_num=data['data'][index]['queryLeftNewDTO']['ze_num']
+				result.rw_num=data['data'][index]['queryLeftNewDTO']['rw_num']
+				result.yw_num=data['data'][index]['queryLeftNewDTO']['yw_num']
+				result.yz_num=data['data'][index]['queryLeftNewDTO']['yz_num']
+				result.wz_num=data['data'][index]['queryLeftNewDTO']['wz_num']
 
 		result_str=result.train_code+'_'+result.start_station+'-'+result.end_station+'\n'+\
 			result.from_station+u'发车:'+result.start_time+'-'+result.to__station+u'到达:'+result.arrive_time+'('+result.duration+'min)'+'\n'+\
-			u'是否有余票(Y/N):'+result.available
+			u'是否有余票(Y/N):'+result.available+'\n'+\
+			u'[特等/一等/二等]:'+result.sc_num+'/'+result.c1_num+'/'+result.c2_num+'\n'+\
+			u'[软卧/硬卧/硬座/无座]:'+result.yw_num+'/'+result.yw_num+'/'+result.yz_num+'/'+result.wz_num
 		return result_str
 
 	#测试数据库

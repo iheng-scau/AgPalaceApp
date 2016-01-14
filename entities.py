@@ -57,5 +57,20 @@ class TrainInfo:
 	arrive_time=''
 	duration=''
 	available=''
+	#特等座
+	sc_num='0'
+	#一等座
+	c1_num='0'
+	#二等座
+	c2_num='0'
+	#软卧
+	rw_num='0'
+	#硬卧
+	yw_num='0'
+	#硬座
+	yz_num='0'
+	#无座
+	wz_num='0'
+
 
 
