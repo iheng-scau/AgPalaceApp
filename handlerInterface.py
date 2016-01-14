@@ -104,7 +104,6 @@ class HandlerInterface:
 		#测试数据库，开发用
 		elif content=='testdb':
 			self.testDB()
-		onAgadamic()
 
 	#获取银宫信息
 	def onAgPalace(self):
