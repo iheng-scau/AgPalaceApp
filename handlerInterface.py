@@ -233,8 +233,8 @@ class HandlerInterface:
 				result.duration=data['data'][index]['queryLeftNewDTO']['lishiValue']
 				result.available=data['data'][index]['queryLeftNewDTO']['canWebBuy']
 
-		result_str=result.train_code+'_'+result.start_station+u'-\>'+result.end_station+'\n'+\
-			result.from_station+':'+result.start_time+'--'+result.arrive_time+':'+result.to__station+'('+result.duration+'min)'+'\n'+\
+		result_str=result.train_code+'_'+result.start_station+'-'+result.end_station+'\n'+\
+			result.from_station+u'发车:'+result.start_time+'-'+result.to__station+u'到达:'+result.arrive_time+'('+result.duration+'min)'+'\n'+\
 			u'是否有余票(Y/N):'+result.available
 		return result_str
 

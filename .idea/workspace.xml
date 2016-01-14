@@ -26,8 +26,8 @@
       <file leaf-file-name="handlerInterface.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/handlerInterface.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.5535714">
-              <caret line="229" column="69" selection-start-line="229" selection-start-column="69" selection-end-line="229" selection-end-column="69" />
+            <state vertical-scroll-proportion="0.85636115">
+              <caret line="236" column="81" selection-start-line="236" selection-start-column="81" selection-end-line="236" selection-end-column="81" />
               <folding>
                 <element signature="e#16#26#0" expanded="true" />
               </folding>
@@ -326,14 +326,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/templates/reply_text.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-4.375">
-          <caret line="7" column="6" selection-start-line="7" selection-start-column="6" selection-end-line="7" selection-end-column="6" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/templates/train_site_url.txt">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -360,10 +352,18 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/templates/reply_text.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.12729844">
+          <caret line="6" column="30" selection-start-line="6" selection-start-column="22" selection-end-line="6" selection-end-column="30" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/handlerInterface.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.5535714">
-          <caret line="229" column="69" selection-start-line="229" selection-start-column="69" selection-end-line="229" selection-end-column="69" />
+        <state vertical-scroll-proportion="0.85636115">
+          <caret line="236" column="81" selection-start-line="236" selection-start-column="81" selection-end-line="236" selection-end-column="81" />
           <folding>
             <element signature="e#16#26#0" expanded="true" />
           </folding>
